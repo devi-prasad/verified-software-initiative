@@ -1,0 +1,13 @@
+System:
+A system is commonly defined to be a collection of hardware, software, people, facilities, and procedures organized to accomplish some common objectives.
+
+Systems Engineering:
+A set of activities which control overall design, implementation and inegration of a  complex set of interacting components or systems to meet the needs of all users.
+
+Engineering:
+A discipline for transforming scientific concepts into cost-effective products through the use of analysis and judgment.
+
+Engineering of a System: 
+Engineering discipline that develops, matches, and trades off requirements, functions, and alternate system resources to achieve a cost-effective, life-cycle-balanced product based upon the needs of the stakeholders.
+
+

@@ -1,0 +1,19 @@
+
+Keyring defect
+
+https://lwn.net/Articles/498074/
+
+https://github.com/coreos/linux/blob/master/security/keys/process_keys.c
+
+https://github.com/coreos/coreos-overlay/blob/master/sys-kernel/coreos-sources/files/4.4/0022-KEYS-Fix-keyring-ref-leak-in-join_session_keyring.patch
+
+http://perception-point.io/2016/01/14/analysis-and-exploitation-of-a-linux-kernel-vulnerability-cve-2016-0728/
+
+The Perception Point Research team has identified a 0-day local privilege escalation vulnerability in the Linux kernel. While the vulnerability has existed since 2012,
+
+CVE-2016-0728 is caused by a reference leak in the keyrings facility. 
+
+Even though the bug itself can directly cause a memory leak, it has far more serious consequences. After a quick examination of the relevant code flow, we found that the usage field used to store the reference count for the object is of type atomic_t, which under the hood, is basically an int – meaning 32-bit on both 32-bit and 64-bit architectures. While every integer is theoretically possible to overflow, this particular observation makes practical exploitation of this bug as a way to overflow the reference count seem feasible. And it turns out no checks are performed to prevent overflowing the usage field from wrapping around to 0.
+
+If a process causes the kernel to leak 0x100000000 references to the same object, it can later cause the kernel to think the object is no longer referenced and consequently free the object. If the same process holds another legitimate reference and uses it after the kernel freed the object, it will cause the kernel to reference deallocated, or a reallocated memory. This way, we can achieve a use-after-free, by using the exact same bug from before. A lot has been written on use-after-free vulnerability exploitation in the kernel, so the following steps wouldn’t surprise an experienced vulnerability researcher. 
+

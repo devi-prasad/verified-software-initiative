@@ -1,0 +1,30 @@
+
+
+West Virginia University in Morgantown
+
+------------------------------------------------------------------------
+VW programmed about 500,000 cars over half a decade to cheat on its emissions tests. The worldwide total, VW has revealed, is 11 million. It is a story of massive corporate fraud.
+
+The EPA has banned emissions test “defeat devices“ for decades. In 1995, it fined GM $11 million for turning off carbon monoxide controls when the air conditioning was on. Some observers have defended GM, arguing that carbon monoxide pollution is primarily an issue in the winter.
+
+Defeat Devices
+https://en.wikipedia.org/wiki/Defeat_device
+
+VW’s defeat devices were subtler and more insidious. Instead of just turning off and on with the air conditioner, they took into account “the position of the steering wheel, vehicle speed, the duration of the engine’s operation, and barometric pressure” — a list of criteria that precisely mirrors the conditions of the EPA’s required emissions testing.
+
+A dedicated circuit or a special valve would have been impossible for VW to hide. But it’s easy to conceal the scraps of code that check to see whether the car is being driven in a way that looks suspiciously like an emissions test.
+
+-------------------------------------------------------------------------------
+https://www.schneier.com/blog/archives/2015/09/volkswagen_and_.html
+Volkswagen and Cheating Software
+
+Software verification has two parts: transparency and oversight. Transparency means making the source code available for analysis. The need for this is obvious; it's much easier to hide cheating software if a manufacturer can hide the code.
+
+But transparency doesn't magically reduce cheating or improve software quality, as anyone who uses open-source software knows. It's only the first step. The code must be analyzed. And because software is so complicated, that analysis can't be limited to a once-every-few-years government test. We need private analysis as well.
+
+It was researchers at private labs in the United States and Germany that eventually outed Volkswagen. So transparency can't just mean making the code available to government regulators and their representatives; it needs to mean making the code available to everyone.
+
+
+-------------------------------------------------------------------------------
+
+

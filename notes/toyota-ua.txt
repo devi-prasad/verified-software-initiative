@@ -1,0 +1,13 @@
+
+Toyota Unintended Acceleration and the Big Bowl of “Spaghetti” Code
+Posted on Thursday, Nov 7th, 2013
+http://www.safetyresearch.net/blog/articles/toyota-unintended-acceleration-and-big-bowl-%E2%80%9Cspaghetti%E2%80%9D-code
+
+An Update on Toyota and Unintended Acceleration
+Saturday, October 26th, 2013 by Michael Barr
+http://embeddedgurus.com/barr-code/2013/10/an-update-on-toyota-and-unintended-acceleration/
+
+Prof. Phil Koopman
+https://users.ece.cmu.edu/~koopman/pubs/koopman14_toyota_ua_slides.pdf
+
+
