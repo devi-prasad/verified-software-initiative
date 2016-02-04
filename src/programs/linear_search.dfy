@@ -1,20 +1,46 @@
 
-method linear_search(a: array<int>, key: int) returns (index: int)
-    requires a != null;
-    ensures index >= 0 ==> index < a.Length && a[index] == key;
-    ensures index < 0 ==> forall k :: 0 <= k < a.Length ==> a[k] != key;
+method linear_search(arr: array<int>, key: int) returns (index: int)
+    requires arr != null;
+    ensures index >= 0 ==> index < arr.Length && arr[index] == key;
+    ensures index < 0 ==> forall k :: 0 <= k < arr.Length ==> arr[k] != key;
+
 {
-    var i := 0;
-    var high :=	a.Length;
-    while (i < high)
-        invariant 0 <= i <= high <= a.Length;
-        invariant forall j :: 0 <= j < i ==> a[j] != key;
+    index := 0;
+    var high :=	arr.Length;
+    while (index < high)
+        invariant 0 <= index <= high <= arr.Length;
+        invariant forall j :: 0 <= j < index ==> arr[j] != key;
     {
-        if (a[i] == key) {
-            return i;        
+        if (arr[index] == key) {
+            return;
         }
-        i := i + 1;
+        index := index + 1;
     }
 
     return -1;
+}
+
+method test_linear_search()
+{
+    var a := new int[8];
+    var i;
+
+    assert(a.Length == 8);
+
+    a[0] := 100;
+    a[1] := -2;
+    a[2] := 200;
+    a[3] := 42;
+    a[4] := 42; a[5] := -2; a[6] := 200; a[7] := 42;
+
+
+    i := linear_search(a, -2);
+    assert(i > 0);
+
+    i := linear_search(a, 42);
+    assert(i > 0);
+
+    i := linear_search(a, 1);
+    assert(i < 0);
+
 }
