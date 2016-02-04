@@ -1,7 +1,7 @@
 /**
  * spin -cC hdfs-nodes.pml
  * spin -a hdfs-nodes.pml; cc -DSAFETY pan.c -o pan; pan;
- * spin -cC -k hdfc-nodes.pml.trail hdfc-nodes.pml
+ * spin -cC -k hdfs-nodes.pml.trail hdfs-nodes.pml
  *
 **/
 
@@ -12,7 +12,7 @@ proctype namenode(chan master)
 {
     byte dn;
     chan ch;
-    byte dn_id = 1;
+    byte dn_id = 0;
     byte dnodes = 0;
 
 end:
@@ -52,14 +52,15 @@ proctype datanode(chan master)
 }
 
 init {
-    chan master = [2] of { mtype, byte, chan };
+    chan master = [1] of { mtype, byte, chan };
 	
 	run namenode(master);
 	run datanode(master);
+    run datanode(master);
 }
 
 /**
-  Check - what is the effect of altering the rule in line 42 so that
+  Check - what is the effect of altering the rule in line 47 so that
         the OK response from the server is handled separately in an action
         of its own, as shown below?
     do
