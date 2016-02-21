@@ -1,15 +1,15 @@
 
 method max3(a: int, b: int, c: int) returns (max: int, vn: char)
-    ensures (a >= b >= c) || (a >= c >= b) ==> max == a && vn == 'a';
-    ensures (b > a >= c)  || (b >= c > a)  ==> max == b && vn == 'b';
-    ensures (c > a >= b)  || (c > b > a)   ==> max == c && vn == 'c';
+    ensures ((a >= b) && (a >= c)) ==> max == a && vn == 'a';
+    ensures ((b > a)  && (b >= c)) ==> max == b && vn == 'b';
+    ensures ((c >= a)  && (c >= b))  ==> max == c && vn == 'c';
 {
     max := a; vn := 'a';
     if (b > max) {
         max := b;  vn := 'b';
     }
     if (c > max) {
-        max := c;  vn := 'c';
+     max := c;  vn := 'c';
     }
 }
 
