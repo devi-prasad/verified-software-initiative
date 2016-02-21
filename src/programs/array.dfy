@@ -1,7 +1,7 @@
 
 /**
  * Take a look at the technique. This method doesn't explicitly return a value.
- * It initialized the given array and states this fact in its postcondition.
+ * It only initializes the array argument, and states this fact in its postcondition.
  *
  */
 method array_init(a: array<int>)
@@ -42,16 +42,17 @@ method array_update(a: array<int>, index: nat, val: int)
 
 method test_array_new()
 {
-	var arr: array<int> := new int[8];
-	array_init(arr);
+    var arr: array<int> := new int[8];
+    array_init(arr);
 
-	assert(forall j :: 0 <= j < arr.Length ==> arr[j] == 0);
+    assert(forall j :: 0 <= j < arr.Length ==> arr[j] == 0);
 
     var j := arr.Length - 1;
-	array_update(arr, j, 100);
-	assert(arr[j] == 100);
+    array_update(arr, j, 100);
+    assert(arr[j] == 100);
 
 	array_update(arr, 0, -100);
     assert(arr[0] == -100);
-	assert(arr[j] == 100);
+    assert(arr[1] == 0);
+    assert(arr[j] == 100);
 }

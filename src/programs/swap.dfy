@@ -7,7 +7,7 @@ ensures (x == b && y == a);
 
 method main()
 {
-    var a, b: int;
+    var a: int, b: int;
     
     a := 100;
     b := 200;
