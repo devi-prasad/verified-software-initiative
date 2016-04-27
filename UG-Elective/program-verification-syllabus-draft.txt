@@ -1,0 +1,97 @@
+
+                    The draft syllabus of a course titled
+          The Specification and Verification of Sequential Programs
+
+Date: 27-April-2016
+Author: M. Devi Prasad
+        School of Information Sciences
+        Manipal University
+
+----
+Note:
+  We have listed 39 lectures of one hour each. 
+  About 25 lectures will engage students in hands-on development.
+  Students work directly with language tools that provide immediate feedback.
+  The students learn by doing and not meerly by listening.
+----
+
+Unit 1 - Background and Introduction                       4 lectures
+-------------------------------------
+    Sequential, concurrent, and reactive systems
+    Programming languages and paradigms
+    Type systems of programming languages
+    Assigning meaning to programs
+        operational semantics
+        denotational semantics
+    Partial and total correctness
+    Safety critical systems in different domains
+    The correctness requirements of modern solutions
+
+
+Unit 2 - Mathematical and Logical Foundations              4 lectures
+----------------------------------------------
+Logic for Program Design
+    Propositional Calculus
+    Predicate Calculus
+Mathematics for Specification
+    Sets, Relations, Functions
+    Sequences and Bags 
+    Mathematical induction
+
+
+Unit 4 - Specification of Programs                         5 lectures
+-----------------------------------
+    Preconditions
+    Postconditions
+    Loop invariants
+    Variant functions
+    The state model of programs
+    Hoare triples
+    Partial and total correctness
+    Weakest precondition
+    Guarded commands
+
+
+Unit 3 - Functional Programming with OCaml                 13 lectures
+-------------------------------------------
+    Why functional programming matters
+    Algebraic data types
+    Higher order functions
+    Imperative programming
+    classes and objects
+
+
+Unit 5 - Program Verification using Dafny                  13 lectures
+--------------------------------------------
+    Functions
+    Classes, fields and methods 
+    assertions, preconditions and postconditions
+    Loop invariants
+    Termination
+    Arrays
+    Quantifiers
+    Predicates
+    Framing
+    Lemmas
+
+
+
+Text books, References, and Online Resources
+-----------------------------------------
+
+1. Program Derivation.
+    Geoff Dromey. 
+    International Computer Science Series. Addison-Wesley. 1989.
+
+2. Logic in Computer Science - Modeling and Reasoning about Systems.
+    Michael Huth and Mark Ryan.
+    Cambridge University Press. 2004.
+
+3. Real World OCaml - Functional Programming for the Masses.
+    Yaron Minsky, Anil Madhavapeddy, and Jason Hickey
+    O'Reilly Media. November 2013
+
+4. Dafny: a language and program verifier for functional correctness.
+    http://research.microsoft.com/en-us/projects/dafny/
+    Microsoft Research.
+
