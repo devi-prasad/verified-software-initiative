@@ -1,0 +1,38 @@
+Functional programming languages offer extremely simple and rich forms of function definition and composition. Functions in Ocaml are versatile as the following examples demonstrate. We shall develop the necessary intuitions for Ocaml in a series of small steps. For expository purposes, in some key cases, we shall present equivalent versions of "functions" in the C programming language. 
+
+One of the most common forms of defining a function is by using the 'let' expression:
+
+let twice x = 2 * x
+
+We should pause for a moment to appreciate the sparse syntax, and the resulting conciseness in defining the function above. Indeed, here is a C language version of the same expression:
+ 
+int twice(int x) { return 2 * x; }
+
+Note how Ocaml's type system relieves us of specifying function's return type and the argument type. Ocaml infers these types based on the use of the multiplication operation in the function body. On the other hand, it is mandatory for the C programmer to explicitly supply complete type information within the program.
+
+If we enter the definition of 'twice' in utop REPL, it responds so:
+
+let twice x = 2 * x
+val twice : int -> int = <fun>
+
+The arrow is indicative of a function - 'twice' is a function that takes an integer to integer.
+
+Functions that apply to more than one argument are written in a similar manner:
+
+let add x y = x + y
+
+We should note the apparent simplicity in the syntax. Function parameters are written one after another without intervening punctuations such as commas. Nor are brackets required to separate function name from the parameter list.
+
+An equivalent definition in C language is straightforward, albeit requiring additional type embellishments, and commas and brackets to separate different syntactic units:
+
+int add(int x, int y) { return x + y; }
+
+Although the visible differences are superficial and minor, they are, in reality, indicative of a few deeper differences that run through the very nature of these programming languages. Much as in biology, the outward appearance (phenotype) is a consequence of the differences in the underlying principles and mechanisms (genotype). We need to study this a little more carefully in order to really appreciate the intrinsic differences.
+
+Let us take a close look at the response from utop REPL:
+
+let add x y = x + y
+val add : int -> int -> int = <fun> 
+
+There is a very important idea buried in the innocuous output. It indicates that 'add' is a function that takes an integer to a function, which in turn, takes an integer to an integer. This is fascinating!
+

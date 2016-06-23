@@ -1,0 +1,83 @@
+
+A characteristic feature of functional programming is that if an expression possesses a well-defined value, the order in which it is evaluated does not affect the result. Functional programming languages allow expressions to be constructed, composed, and reasoned about using mostly familiar laws of algebra. One of the consequences is that programmers have to work with a simple conceptual framework. 
+
+Functional programming languages offer powerful constructs for developing modular and for incremental solutions: polymorphism, type inferencing, and module systems. Algebraic data types, pattern matching, and higher-order functions make it possible to develop highly reusable code. These languages are known to adopt uniform rules of composition that positively impact conciseness and expressiveness. 
+
+There is evidence to believe that functional programming languages improve programmers' productivity. This may be due to two factors: 
+    type inferencing and polymorphism reduce the extent of planning required to organize data types and code which represent domain objects and behaviors.
+
+    pattern matching is effective in ensuring execution safety. Pattern matching performs exhaustive compile-time checks to cover all the possible shapes of data being manipulated.
+
+    higher-order functions improve code reuse. Module systems allow varying the   implementation of behaviors while keeping the interfaces intact. This encourages agile and incremental programming practices by reducing detailed upfront planning.
+
+
+	Program execution is equated with state transformations.
+Programming languages distinguish expressions from commands (or statements).
+Imperative programming languages avoid powerful compositional forms.
+Lack mathematical properties for reasoning about programs.
+
+The FP community has developed a repertoire of powerful ideas
+	higher-order functions
+	algebraic data types
+	polymorphism
+	type inferencing
+	rich set of compositional operators
+	separation of pure and impure (effectful) constructs
+	strict and non-strict evaluation
+
+In the FP school of programming, the ability to reason about the properties of programs is as important as ensuring the execution efficiency of programs.
+
+In is customary in CS research to use FP languages for developing next gen solutions. They have been used to create theorem provers, AI systems, symbolic math frameworks, tools for program analysis, and such.
+
+The last few years, large software systems have been developed solely using FP languages. 
+
+FP languages have been used to develop systems that require guarantees about correctness, safety, and availability. 
+
+Relevance of FP in 21st Century
+Our civilization is increasingly depending on computers. 
+    Complex systems
+        smart cities
+        IoT
+        intelligent systems
+        
+    Safety critical systems
+    	implantable devices
+    	
+
+
+
+Facebook - 
+    Hack    http://hacklang.org/
+    Flow    https://flowtype.org/
+    pfff    https://github.com/facebook/pfff/wiki/Main
+
+Twitter
+Jane Street
+Google
+Microsoft
+Docker
+    Mirage OS.     https://mirage.io/
+Citrix uses OCaml in XenServer
+	https://github.com/xapi-project/
+
+OCaml Companies: https://ocaml.org/learn/companies.html
+
+
+The type system
+    Use the type system to enforce abstractions, simplifying interactions.
+    Enforce key invariants via types
+       (e.g. that certain values cannot escape some scope)
+    That certain code does no IO, does not touch the disk
+    Enforce safety
+       checked exceptions (Maybe/Either)
+       avoid mixing concepts (Word, Int, Address)
+    Good data structures (like zippers) can make some classes of testing needless
+
+
+Purity
+    Reduce complexity dramatically by removing state. Purely functional code scales, because it is compositional. All you need is the type to determine how to use some code -- it won't mysteriously break when you change some other part of the program.
+    
+    Use lots of "model/view/controller" style programming: parse external data as soon as possible into purely functional data structures, operate on those structures, then once all work is done, render/flush/serialize out. Keeps most of your code pure
+
+ Type classes and existential types
+    Use type classes to provide abstraction: hide implementations behind polymorphic interfaces.
