@@ -1,0 +1,96 @@
+
+Unit 1 --- Background and Introduction
+
+
+Sequential, Concurrent, and Reactive Systems
+---------------------------------------------
+Most of the programs that we write are sequentially executed. Sequentiality is built into programming language constructs. For example, consider the following iteration statement in a C program:
+
+    for (i = 1; i < 10; i++) {
+        a[i-1] = a[i-1] + 1 ;
+        a[i] = a[i] + a[i-1];
+    }
+
+The reader would recognize the value of variable i to sequentially range from 1 to 9 while executing the loop statements. The reader would also intuitively imagine that the two comma separated statements in the loop body will be strictly executed one after another. This is essential to calculate the "meaning" of the iteration, that is, the effects of repeatedly executing these two statements.
+
+Concurrency, on the other hand, is a program structuring method. Concurrency is concerned with nondeterministic composition of programs or components. (Parallelism, on the other hand, is concerned with deterministic behavior of asymptotically efficient programs).
+
+Concurrency arises because the world is full of concurrent actions - user taps a screen, presses a key, disk controller completes IO, Web server receives a new HTTP request, and so on. All these situations are inherently nondeterministic. Programmers wish to respond to these events in a systematic manner. Thus. nondeterministic composition is a powerful program structuring idea. Each request that arrives at a Web server, for example, has some nondeterministic origin, and yet, the server manages to cope with these events in a meaningful way.
+
+Concurrency may this introduce bugs if shared reesources are not managed appropriately. We must note that programmers need to be aware that their programs may be executed concurrently with another unrelated program and they may interact in unforeseen ways by accessing shared resources of the system. One has to program against all possible schedules.
+
+Some people like to put it this way: the fundamental problem of concurrency is precisely how to restrict parallelism. A concurrent access to a resource have to be made sequential. It is the lack of parallelism. One is dealing with concurrency when obe cannot use parallelism.
+
+Many programming languages have direct support for expressing concurrency. Imperative languages such as Java and C# permit programmers to annotate code blocks and methods with synchronization markers, and allow classes to implement some sort of thread interfaces. The underlying virtual machine schedules concurrent threads.
+
+Programming and reasoning about concurrency is difficult. Programs that use threads and shared-memory models will have to be programmed with extreme care. There have been numerous cases where highly engineered languages such as Java have been shown to hide deep technical flaws especially in concurrent thread execution contexts.
+
+A reactive system, in contrast to a sequential transformational system, is characterized by being event driven, continuously having to react to external and internal stimuli. The behavior of a reactive system is represented by a set of sequences of input and output events, conditions, actions, and perhaps some timing constraints. A reactive system maintains continuous interaction with its environment.
+
+It should be noted that most of the algorithmic, transformational systems do not maintain continuous interaction with their environment. Such systems read their inputs first and carry out a series of transformations on the input. The outputs are generated when the program terminates. Algorithms have to terminate. This is one of the characteristic features - termination.
+
+Reactive systems usually exhibit concurrent behaviors, and they are not designed to terminate. The formalisms required to analyze and understand reactive systems are different from those required for sequential systems. Further, properties such as fairness and deadlock freedom are the desirable in reactive systems. Termination is not key at all. 
+
+Some of the examples include such simple systems as traffic lights, and industrial process control systems, Web servers, Operating Systems, pacemakers, and so on.
+
+
+Imperative and Functional Programming Languages
+-----------------------------------------------
+
+
+
+Type Systems of Programming Languages
+--------------------------------------
+
+
+
+
+
+
+Assigning Meanings to Programs
+-------------------------------
+
+We distinguish between the syntax and the semantics of a programming language. The syntax of the language specifies the grammatical structure of programs. 
+
+The semantics is concerned with the meaning of grammatically correct programs. We need to be clear about what we actually mean by saying "meaning of a program." Consider the following sequence of statements in a C program:
+    
+    temp = x;
+    x = y;
+    y = temp;
+
+A casual reader would recognize that these statements exchange the values of variables 'x' and 'y'. The reader would also recognize that variable 'temp' is necessary for this purpose. Without such a scratch register, it is impossible to interchange the values of two variables using assignment statements alone. 
+
+How does one construct the meaning of such a program? The actual description can be formalized in different ways. We may classify three broad types of methods:
+    
+    Operational Semantics
+    ----------------------
+    The meaning of a syntactic construct is defined in terms of the effect it produces when it is executed on a concrete machine. Usually, a machine with simple structure and behavior is used so that the execution of a program fragment can be easily mapped to the states of the machine. 
+
+    Operational descriptions include machines with precise state-transition relations. A program is viewed as actually transforming the machine from one state to the other. The meaning of programming language constructs is provided in terms of such transformation of state configurations. The state of a machine includes memory locations, identifiers visible in the environment, values bound to those identifiers, etc.
+
+    Operational semantics is the preferred method among programming language researchers. It is relatively easier to design an abstract machine, and to provide formal rules the govern its behaviors.
+
+    Denotational Semantics
+    -----------------------
+    The meaning of syntactic constructs is mapped to well-defined mathematical objects. These mathematically precise descriptions essentially capture the effect of executing program constructs. The emphasis is not on how the effect is produced or realized on an abstract machine, but on the mathematical objects that convery the abstract meaning.
+
+    Functions are one class of mathematical objects which capture the meaning of program constructs. The meaning of an entire program may be viewed as a larger function composed out of smaller functions that represent meaning of component units. For this reason, denotational semantics is said to be highly compositional in nature. That is, the semantics of a syntactic unit is solely defined in terms if the semantics of its constituent parts.
+    
+    Denotational semantics is preferred for reasoning about programs. However, the mathematical sophistication required to really give program denotations is not trivial at all.
+
+    Axiomatic Semantics
+    --------------------
+    Mathematical logic is used to assert that certain properties hold as a result of executing program constructs. Logical statements may state what properties hold before and after executing the programs statements. For example, after the execution of the first two statements, the following assertion must hold:
+
+        temp = x;
+        assert(temp = x)
+        x = y;
+        assert (temp = x and x' = y)
+        y = temp;
+        assert(temp = x and x' = y and y' = x)
+    
+    where the reference to x and y inside logical assertions represent values of program variables x and y, while the logic variable x' represents the new or modified value of the program variable x, and similarly, the logic variable y' represents the new value of the program variable y.
+
+    Axiomatic specifications capture the algebraic properties of various constructs. It provides a logical system to prove correctness properties of programs. Each construct is specified using precondtion assertion and postcondition assertions. 
+
+

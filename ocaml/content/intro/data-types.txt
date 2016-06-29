@@ -1,0 +1,58 @@
+Functional programming languages are known for their penchant for built-in data types. OCaml too offers an collection of versatile data types. The following table shows some of the most commonly used data types in OCaml. For each type, the table also shows corresponding types in C and Python that serve similar purpose.
+
+Type Name	OCaml		        C    	   	Python		OCaml Example
+-------------------------------------------------------------------------------
+list		list	    		-		   	List 		[10; 20; 30;]
+array		array				array		array		[|10; 20; 30|]
+            (mutable)                       (module)
+product     tuple	    		-          	tuple   	(true, 5)
+product   	immutable record	-		   	-			type point = 
+                                                            {x:int; y:int}
+product   	mutable record		struct	   	dict		type point = 
+                                                            { mutable x:int;
+                                                              mutable y:int }
+sum 		variant				union	    -			type result = 
+								(unsafe)				       | Empty 
+								                               | Full 
+								                               | Ok of int
+
+sum 		variant				enum	    -			type status = 
+                                                               | Ok 
+                                                               | Bad of string
+
+
+
+Tuples
+-------
+A tuple is an ordered collection of values. Each value in a tuple may be of a different type. The syntax to create a tuple value is straightforward: comma separated values enclosed in a pair of braces.
+
+let res = (0, [10; 20; 30])
+val res : int * int list = (0, [10, 20, 30])
+
+In the REPL output, note the "*" between the type names. Here it represents a Cartesian product of the set of value of type int and the set of values of type string.
+
+Pattern matching can tease components from a tuple in a type-safe manner:
+
+let res = (0, [10; 20; 30])
+val res : int * int list = (0, [(10; 20; 30)])
+
+let (s, l) = res
+val s : int = 0             
+val l : int list = [(10, 20, 30)]
+
+The novice usually stumble on a minor confusion while defining lists. Note that the following two data definitions have altogether different shapes:
+	let l = [10; 20; 30])
+	let lt = [10, 20, 30]
+There is only one superficial difference in these two expressions: the first form uses semicolons to separate three integers, and the second form uses comma to separate the values. These two expressions, however, represent entirely different types of values. Let us see how the REPL responds to these inputs.
+
+let l = [10; 20; 30])
+val l : int list = [10; 20; 30]
+
+let lt = [10, 20, 30]
+val lt : (int * int * int) list = [(10, 20, 30)]
+
+The first expression represents a list of integers. The second expression represents a list of tuples containing three integer components! Take a close look at these two expressions till you get a firm understanding of the differences.
+
+
+
+

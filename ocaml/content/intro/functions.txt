@@ -1,6 +1,6 @@
 Functional programming languages offer extremely simple and rich forms of function definition and composition. Functions in Ocaml are versatile as the following examples demonstrate. We shall develop the necessary intuitions for Ocaml in a series of small steps. For expository purposes, in some key cases, we shall present equivalent versions of "functions" in the C programming language. 
 
-One of the most common forms of defining a function is by using the 'let' expression:
+We use the 'let' binding-expression to define a named function:
 
 let twice x = 2 * x
 
@@ -27,6 +27,12 @@ An equivalent definition in C language is straightforward, albeit requiring addi
 
 int add(int x, int y) { return x + y; }
 
+The Ocaml version of 'add' can be applied to arguments like so:
+
+add 10 20
+val: 30
+
+
 Although the visible differences are superficial and minor, they are, in reality, indicative of a few deeper differences that run through the very nature of these programming languages. Much as in biology, the outward appearance (phenotype) is a consequence of the differences in the underlying principles and mechanisms (genotype). We need to study this a little more carefully in order to really appreciate the intrinsic differences.
 
 Let us take a close look at the response from utop REPL:
@@ -34,5 +40,14 @@ Let us take a close look at the response from utop REPL:
 let add x y = x + y
 val add : int -> int -> int = <fun> 
 
-There is a very important idea buried in the innocuous output. It indicates that 'add' is a function that takes an integer to a function, which in turn, takes an integer to an integer. This is fascinating!
+There is a very important idea buried in this innocuous output. On a cursory reading, it says that 'add' is a function that takes an integer to a function, which in turn, takes an integer to an integer. For our convenience, we will simplify REPL's output to suit our purpose, and regroup terms in the type signature as follows:
+
+add: int -> (int -> int)
+
+What this means is that if we apply function 'add' to only one argument (named 'x' in the OCaml function definition above), the result would be a new function: int -> int. This new value - an anonymous function - is the result of "partial application." If we apply this anonymous "partial function" to another integer argument, it will evaluate the expression x+y and give an answer!
+
+
+
+
+
 
