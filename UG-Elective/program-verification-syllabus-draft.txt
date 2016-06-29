@@ -39,7 +39,7 @@ Mathematics for Specification
     Mathematical induction
 
 
-Unit 4 - Specification of Programs                         5 lectures
+Unit 3 - Specification of Programs                         5 lectures
 -----------------------------------
     Preconditions
     Postconditions
@@ -52,7 +52,7 @@ Unit 4 - Specification of Programs                         5 lectures
     Guarded commands
 
 
-Unit 3 - Functional Programming with OCaml                 13 lectures
+Unit 4 - Functional Programming with OCaml                 13 lectures
 -------------------------------------------
     Why functional programming matters
     Algebraic data types
