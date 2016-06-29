@@ -36,15 +36,40 @@ Some of the examples include such simple systems as traffic lights, and industri
 
 Imperative and Functional Programming Languages
 -----------------------------------------------
+Imperative programming distinguishes the world of expressions from the world of commands or statements. Expressions, in the mathematical sense of the word, always evaluate to the same value in a given environment that binds particular values to variables. Statements or commands, on the other hand, operate by changing the state of the variables, that is, statements alter the contents of memory locations designated by the variable. Thus, an imperative program is imagined to be a large state machine, and each statement in the program transforms states. As the program executes, the state of the program varies according the changes made to the values of variables.
 
+Imperative programs work by side effects. An assignment statement, for example, may change the value of a variable visible in the outer scope (may be global scope), thus affecting the evaluation of an expression elsewhere in the program (in case this expression refers to that particular variable).
+
+Imperative programming languages generally have mutable data types. Arrays and records are examples. Reasoning about the behavior of a program fragment in an imperative setting us hard because one needs to keep in mind non-local changes that may occur. These non-local effects break modular reasoning.
+
+John Hughes writes "Functional programming is so called because its fundamental operation is the application of functions to arguments." Some of the salient features of functional programming languages is that they do not contain assignment statements, so once a value is bound to a variable, it cannot be changed (i.e., immutable). More generally, functional programs contain no side effects. This essentially makes the order of execution irrelevant and removes insidious bugs. 
+
+Since expressions in functional programs can be evaluated at any time, we can freely substitute variables by their values and vice versa. This property is called "referential transparency."
+
+Also, since the order of evaluation is not important, varieties of flow control statements found in imperative languages are not at all necessary in functional programs. 
 
 
 Type Systems of Programming Languages
 --------------------------------------
+A program variable can assume a range of values during program execution. The type of a variable dictates the range of values. For example, a variable of type 'boolean' may assume only two values: true or false. Given such a boolean variable 'x', operations such as not(x) have well-defined meaning in every run of the program.
 
+A type system for a typed programming language keeps track of the types of variables, and contains rigorous rules to determine the types of all expressions in a program. Type systems are used to determine whether programs are  well behaved. Only those program sources that comply with a type system are considered eligible for execution. Programs that are not accepted by the type systems must be discarded.
 
+A program is considered safe if it does not result in an untrapped error. An untrapped error usually goes unnoticed but eventually causes arbitrary behavior. Accessing past the end of an array or jumping into non-code section of a program are a couple of examples. Languages where all program fragments are safe are called safe languages. 
 
+Typed languages may enforce safety by statically rejecting all programs that are potentially unsafe. Typed languages may also use a combination of run time and static checks.
 
+The C and C++ programming languages are unsafe by this definition. Java employs a mix of both static and runtime checks to ensure safety. Java also traps errors due to null references, wrong typecasts, and much more.
+
+Programming languages such as ML, OCaml and Haskell are also safe languages. ML and OCaml, for instance, does not have the problem null references at all. Also, these languages are implicitly typed, by which we mean that the type systems of these languages infer types for large sections of programs.
+
+A program is said to be  well-behaved if it does not cause untrapped errors and a set of forbidden errors (which are a subset of trapped errors).
+
+Typed languages can enforce good behavior, including safety, by performing static or compile time checks. This is done to prevent unsafe and ill behaved programs from ever running. These languages are said to be 'statically checked' and the checking process is called typechecking. The algorithm that performs this checking is called the typechecker of the language.
+
+Untyped languages can enforce good behavior (including safety) in a different way, by performing sufficient run time checks to rule out all forbidden errors. For example, they may check all array bounds, and all division operations, generating recoverable exceptions when forbidden  errors  would  happen. The  checking  process  in  these  languages  is  called dynamic checking. Python is an example of such a language. Scheme and Lisp also employ dynamic checking. These languages are strongly checked even though they have neither static checking, nor a type system.
+
+It may be noted that assembly languages are untyped and unsafe languages!
 
 
 Assigning Meanings to Programs
@@ -92,5 +117,33 @@ How does one construct the meaning of such a program? The actual description can
     where the reference to x and y inside logical assertions represent values of program variables x and y, while the logic variable x' represents the new or modified value of the program variable x, and similarly, the logic variable y' represents the new value of the program variable y.
 
     Axiomatic specifications capture the algebraic properties of various constructs. It provides a logical system to prove correctness properties of programs. Each construct is specified using precondtion assertion and postcondition assertions. 
+
+
+Partial and Total Correctness
+------------------------------
+The semantics of a given programming language defines the meaning of syntactically well-formed programs. The semantics may also be required to prove that given programs satisfy certain important properties. One class of properties deals with partial correctness and total correctness.
+
+Partial correctness properties express that if a given program terminates, then there will be certain relationships between the initial and final values of certain program variables. It must be noted that partial correctness property of a program need not ensure that the program terminates. 
+
+This is in contrast to the total correctness properties which express that the program will terminate and that there will be a certain relationship between the initial and final values of certain program variables.
+
+We may state the same with the following expression:
+    partial correctness + termination = total correctness
+
+Functional correctness refers to the input-output behavior of the program.  A termination proof is a mathematical proof that plays an important role in formal verification because the total correctness of an algorithm depends on termination. 
+
+Hoare logic is a formal system for reasoning rigorously about program correctness. Hoare logic uses axiomatic techniques to define programming language semantics, and to reason about the correctness of programs through assertions. These assertions are logical expressions relating the values of program variables before and after executing a language construct. Such assertions are called Hoare triples.
+
+An expression {P} C {Q} is called a partial correctness specification, where P is called its precondition and Q its postcondition. This triple means whenever C is executed in a state satisfying P, and if the execution of C terminates then the state in which C’s execution terminates satisfies Q.
+
+These specifications are ‘partial’ because for {P} C {Q} to be true it is not necessary for the execution of C to terminate when started in a state satisfying P. It is only required that if the execution terminates, then Q holds.
+
+What are the other classes of properties that may be of interest? Programmers may be keen to reason about the resources used in the program. This may help in understanding the "shape" of memory allocated during program execution, or may capture the resource dependencies among program fragments.
+
+
+
+
+
+
 
 
