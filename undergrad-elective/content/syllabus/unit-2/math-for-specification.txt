@@ -1,0 +1,14 @@
+Mathematics for Specification
+------------------------------
+Programs operate on different types of data - integers, floating point numbers, characters, and boolean data types. These data values can be viewed as being drawn from respective sets - objects which are well-known to mathematicians for centuries. Sets also provide the basis for a theory of functions and relations. These constructions, in turn, allow us to define richer collections such as sequences and bags.
+
+
+Sets, Relations, Functions
+---------------------------
+
+Sequences and Bags 
+-------------------
+
+
+Mathematical induction
+-----------------------
