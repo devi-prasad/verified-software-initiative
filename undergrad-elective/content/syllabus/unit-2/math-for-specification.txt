@@ -1,12 +1,81 @@
 Mathematics for Specification
 ------------------------------
-Programs operate on different types of data - integers, floating point numbers, characters, and boolean data types. These data values can be viewed as being drawn from respective sets - objects which are well-known to mathematicians for centuries. Sets also provide the basis for a theory of functions and relations. These constructions, in turn, allow us to define richer collections such as sequences and bags.
+Programs operate on different types of data - integers, floating point numbers, characters, and boolean data types. These data values can be viewed as being drawn from respective sets - objects which are well-known to mathematicians for centuries. Sets also provide the basis for a theory of functions and relations. These constructions, in turn, allow us to define richer collections such as sequences and bags. These objects give us power to specify a great deal about programs.
 
 
-Sets, Relations, Functions
----------------------------
+Sets
+-----
+The entities that make up a set are called its members or elements. To state that an element x is a member of set A, we write
+    x in A
+To state that x does not belong to A, we write
+    x not in A
+
+A set is a collection of distinct objects. Elements do not repeat 
+Two sets are equal or identical if they have exactly the same members. We write
+    A = B
+to mean that sets A and B are equal.
+
+Since sets are also objects, it is easy to conceive of sets that are members of other sets. Here is an example:
+    A = { {1, 3, 5}, {7, 11, 13}, {17, 19, 23} }
+
+It must be noted that 
+    {{1, 3, 5}} not = {1, 3, 5}
+
+However, we should note that
+    {1, 3, 5} in { {1, 3, 5}}
+and
+    x in {x} for any x.
+
+
+Subsets
+--------
+Set A is said to be a subset of B if every element in A is also a member of B. B is said to be a superset of A.
+A subset B == forall x. (x in A => x in B)
+
+Note that A subset A. Thus, we have a notion of "proper subset" where for two sets A and B, 
+    (A subset of B) and (A not = B)
+
+
+Extensional and Comprehensive specification of sets
+----------------------------------------------------
+In a few cases, we can enumerate individual members of a set. This technique of specification is called the extensional method. In most cases, though, it is not possible to exhaustively enumerate all members. In other cases, we may want to specify an expression describing the characteristic properties of the members of the set.
+
+Axiom of Specification or Principles of Comprehensive Specification
+---------------------------------------------------------------------
+For every set A and every well-formed formula P(x), there is another set B whose elements are those elements x in A for which the property P(x) holds.
+    B = { x in A | P(x) }
+
+The set of all positive even numbers may be specified as follows:
+    { x in N | x mod 2 = 0}
+
+The set of two digit positive numbers less than hundred and divisible by 5:
+    { x in N | 9 gt x lt 100 and x mod 5 = 0 }
+
+
+Empty Set
+---------
+Empty set, as the name implies, has no elements. An empty set may written as {} or as 'null'.
+
+Empty set is a subset of very set. This can be proved by contradiction. Assume that empty set is not a member of some set A. This implies that empty set must contain an element that is not in A. But this is not so because an empty set obviously has no members. Thus, our assumption that empty set is not a member of every set must be wrong. Hence, empty set is member of every set.
+
+Power Set
+----------
+The set of all subsets of a set defines the powerset of that set. if A = {1, 2} then the set of all its subsets is:
+    { {1}, {2}, {1, 2}, {} }
+
+Set Operations
+---------------
+A union B = { x | x in A or x in B}
+A intersect B = { x | x in A and x in B } 
+
+Set difference or Relative complement of the set B in set A
+A - B = { x in A | x not in B}
+
+Symmetric difference - element is either only on A or only in B, but not in both).
+A + B = (A - B) union (B - A) 
 
 Sequences and Bags 
+
 -------------------
 
 
