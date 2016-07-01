@@ -40,6 +40,7 @@ Extensional and Comprehensive specification of sets
 ----------------------------------------------------
 In a few cases, we can enumerate individual members of a set. This technique of specification is called the extensional method. In most cases, though, it is not possible to exhaustively enumerate all members. In other cases, we may want to specify an expression describing the characteristic properties of the members of the set.
 
+
 Axiom of Specification or Principles of Comprehensive Specification
 ---------------------------------------------------------------------
 For every set A and every well-formed formula P(x), there is another set B whose elements are those elements x in A for which the property P(x) holds.
@@ -66,7 +67,7 @@ The set of all subsets of a set defines the powerset of that set. if A = {1, 2} 
 Set Operations
 ---------------
 A union B = { x | x in A or x in B}
-A intersect B = { x | x in A and x in B } 
+A intersect B = { x | x in A and x in B }
 
 Set difference or Relative complement of the set B in set A
 A - B = { x in A | x not in B}
@@ -74,8 +75,35 @@ A - B = { x in A | x not in B}
 Symmetric difference - element is either only on A or only in B, but not in both).
 A + B = (A - B) union (B - A) 
 
-Sequences and Bags 
+Pairs
+------
+Pairing is an important idea: it can be used to represent mappings described by functions. An unordered pair may be extensionally specified as {a, b}. We can also give a comprehensive specification as: {x in C | x = a or x = b}. Thus, the set C contains only a and b, and nothing else.
 
+In many cases, we will require a pair of elements to be ordered. Set {a, b} by itself does not capture the notion of ordering. Despite this limitation of sets to abstract away ordering of elements, we would still like to see if sets can be used to represent ordering in some very abstract sense. 
+
+Given an unordered pair {a, b} we may state that an ordered pair (a, b) represents a set containing two subsets: { {a}, {a, b} }. We should have a constructive rule to capture this idea of ordering. Here is the ordering rule:
+    For each position i in the order, create a subset such that it includes only the element that occurs in position i in the order, together with all the elements that occur before the current element in the order.
+
+ Let us try to understand this not-so-intuitive definition with an example. Consider a set A = { Fortran, Lisp, Cobol, Algol, ML }. If we order these elements with the rule described above, we will have
+    Ordered = {{Fortran},
+               {Fortran, Lisp},
+               {Fortran, Lisp, Cobol}, 
+               {Fortran, Lisp, Cobol, Algol},
+               {Fortran, Lisp, Cobol, Algol, ML} }
+
+In other words, this gives a mathematical description of the notion of "ordering" the elements of a set. This is a constructive method of identifying "positions" with subsets of the elements of the given set. 
+
+It is worth noting that (Fortran, Lisp) not = {Fortran, Lisp}. The former is an ordered pair while the latter is a set in which ordering is unimportant. 
+
+We must note that (Fortran, Lisp) not = (Lisp, Fortran). The reason is simple. If we create the sets that represent these two ordered pairs, we will obtain
+     Order1 = { {Fortran}, {Fortran, Lisp} }
+     Order2 = { {Lisp} ,   {Fortran, Lisp} }
+which essentially proves the point.
+
+It is simple to note that the notion of ordering can be extended to n-tuples.
+
+
+Sequences and Bags 
 -------------------
 
 
