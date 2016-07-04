@@ -1,0 +1,23 @@
+Beyond Assertions: Advanced Specification and Verification with JML and 
+ESC/Java2
+    Patrice Chalin
+    Joseph R. Kiniry
+    Gary T. Leavens
+    Erik Poll
+
+There are two categories of tools that check if a sequential program meets its specification:
+    runtime assertion checking (RAC) tools, and
+    static verification (SV) tools.
+
+Runtime assertion checking involves the testing of specifications during program execution. When specifications are violated they result in some form of error being raised. 
+
+In static verification, logical techniques are used to prove that no violations of specifications will take place at runtime. This important property is proved before actually executing the program. Static verification performs static analysis of the code.
+
+Static verification provides stronger guarantees and it gives them earlier. However, static verification tools generally require fairly complete specifications not only for the program unit being checked, but also for the program units and libraries that it depends on.
+
+Further, in order to be effective and to keep false positives to a minimum, static verification tools require specification to make use of fairly advanced specification features and techniques.
+
+
+
+
+

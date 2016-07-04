@@ -1,0 +1,12 @@
+Specification - rigorously specify what properties a program ought to have.
+Specifications may be supplied inline by annotating existing code. 
+Specifications may also be supplied in isolation - separately from the code.
+
+Verification Conditions
+When a tool is not able to automatically check the assertions supplied by the 
+programmer , it emits verification conditions, which are logical assertions 
+that must be checked. These verification conditions may be passed to a 
+decision procedure or an automated theorem prover. In extreme conditions 
+where verification conditions cannot be automatically solved, one may resort 
+to interactive theorem proving.
+
