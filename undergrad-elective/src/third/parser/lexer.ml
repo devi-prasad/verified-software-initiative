@@ -4,57 +4,66 @@ open StringLabels
 
 let isdigit c = (c >= '0' && c <= '9')
 let isalpha c = ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-let alnum   c = (isalpha c) || (isdigit c)
-let iswhitespace c = List.mem [' '; '\t'; '\n'] c
 let iscomma c = (c = ',')
-
+let iswhitespace c = List.mem [' '; '\t'; '\n'] c
+let isnewline c = c = '\n'
 let id x = x
 
 type source = {
    text: string;
    mutable cursor: int;
+   mutable line: int;
 }
 
-type token =  | Comma | Op of string | Num of int
+type token = | Comma | Op of string | Num of int | Error of string | EOF
 
-let read_source path = { text = In_channel.read_all path; cursor = 0; }
-let peek (src: source) = src.text.[src.cursor]
-let advance (src: source) (n: int) = src.cursor <- src.cursor + n
-let substr text start last = StringLabels.sub text start (last-start)
+type state = | End | Pos of int
 
+type read_source = string -> source
+let read_source path   = { text = In_channel.read_all path; cursor = 0; line = 1; }
+let eof (src: source)  = (src.cursor >= (String.length src.text))
+let peek_char (src: source) = src.text.[src.cursor]
+let advance_cursor ?(n=1) src = src.cursor <- src.cursor + n
+let make_lexeme text start last = StringLabels.sub text ~pos:start ~len:(last - start)
+
+type eat_white_space = source -> state
 let eat_white_space (src: source) = 
-    let len = String.length src.text and
-      start = src.cursor in
-      while start < len && iswhitespace (peek src) do
-            advance src 1
-      done
+      while not(eof src) && iswhitespace (peek_char src) do
+        if (isnewline (peek_char src)) then src.line <- src.line + 1;
+        advance_cursor src;
+      done;
+      if (eof src) then End else Pos src.line
 
+type eat_comma = source -> token
+let eat_comma (src: source) = advance_cursor src; Comma
+
+type eat_number = source -> token
 let eat_number (src: source) = 
-    let len = String.length src.text and
-	  start = src.cursor in
-	  while start < len && isdigit (peek src) do
-        advance src 1
+    let start = src.cursor in
+	  while not(eof src) && isdigit (peek_char src) do
+        advance_cursor src;
 	  done;
-      Num (int_of_string (substr src.text start src.cursor))
+      Num (int_of_string (make_lexeme src.text start src.cursor))
 
-
+type eat_ident = source -> token
 let eat_ident (src: source) = 
-    let len = String.length src.text and
-      start = src.cursor in
-        while start < len && isalpha (peek src) do
-          advance src 1
+    let start = src.cursor in
+        while not(eof src) && isalpha (peek_char src) do
+          advance_cursor src
       	done;
-        Op (id (substr src.text start src.cursor))
+        Op (id (make_lexeme src.text start src.cursor))
 
 
+type lex = source -> token
 let lex source = 
-	eat_white_space source;
-    let c = peek source in
-    if (iscomma c) then  (advance source 1; Comma)
-    else if isdigit c then eat_number source
-    else if isalpha c then eat_ident source
-    else assert(false);;
-
+	match eat_white_space source with
+	| Pos _  ->
+      let c = peek_char source in
+      if (iscomma c)    then eat_comma source
+      else if isdigit c then eat_number source
+      else if isalpha c then eat_ident source
+      else assert(false)
+    | End -> EOF
 
 
 
