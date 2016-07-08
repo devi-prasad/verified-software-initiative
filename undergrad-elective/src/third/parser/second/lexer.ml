@@ -37,26 +37,24 @@ let eat_white_space src =
 type eat_comma = source -> token
 let eat_comma src = advance_cursor src; Comma
 
-type eat_number = source -> token
-let eat_number src = 
+type scan_token = source -> (char->bool) -> (string->token) -> token
+let scan_token src pred ctor = 
     let start = src.cursor in
-	  while not(eof src) && isdigit (peek_char src) do
+      while not(eof src) && pred (peek_char src) do
         advance_cursor src;
-	  done;
-      Num (int_of_string (make_lexeme src.text start src.cursor))
+      done;
+      ctor (make_lexeme src.text start src.cursor)
+
+type eat_number = source -> token
+let eat_number src = scan_token src isdigit (fun str -> Num (int_of_string str))
 
 type eat_ident = source -> token
-let eat_ident (src: source) = 
-    let start = src.cursor in
-        while not(eof src) && isalpha (peek_char src) do
-          advance_cursor src
-      	done;
-        Op (id (make_lexeme src.text start src.cursor))
+let eat_ident src = scan_token src isalpha (fun str -> Op str)
 
 type lex = source -> token
 let lex source = 
 	  match eat_white_space source with
-    | Pos _  ->
+	  | Pos _  ->
       let c = peek_char source in
       if (iscomma c)    then eat_comma source
       else if isdigit c then eat_number source
