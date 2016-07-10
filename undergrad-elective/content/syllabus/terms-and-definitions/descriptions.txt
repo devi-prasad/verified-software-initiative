@@ -10,3 +10,21 @@ decision procedure or an automated theorem prover. In extreme conditions
 where verification conditions cannot be automatically solved, one may resort 
 to interactive theorem proving.
 
+preconditions  - requires
+postconditions - ensures
+
+
+Equational reasoning is the method of manipulating structures such as formulas and expressions. The basic idea is that equals can be replaced by equals in any context.
+   Axiom A1 : x ∗ (y + z) = x ∗ y + x ∗ z
+   The axiom A1 states, in general terms, that multiplication
+   distributes over addition.
+
+Given a set of axioms E called an equational theory, and a term t, use E to rewrite t to produce another term t'.
+
+The use of equational reasoning to manipulate expressions lies at the heart of mathematics. Mathematicians extensively use equational reasoning to prove theorems.
+
+When program state is immutable, equals may be replaced by equals in any part of the program. However, assignment statements cause side-effects. The value of the variable after assignment can be used only till the next assignment to the same variable. We need precise rules of command (aka statement) sequencing because assignment violates equational reasoning by affecting the state of the program variables.
+
+
+
+
