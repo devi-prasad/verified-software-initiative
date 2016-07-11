@@ -3,7 +3,7 @@ open Core.Std
 
 type 'a tree = | Nil | Node of 'a tree  * 'a * 'a tree
 
-let rec preorder: 'a. 'a tree -> ('b -> 'a -> 'b) -> 'b -> 'b =
+let rec preorder: 'a tree -> ('b -> 'a -> 'b) -> 'b -> 'b =
     fun tree f seed -> 
       match tree with
       | Nil -> seed
@@ -12,7 +12,7 @@ let rec preorder: 'a. 'a tree -> ('b -> 'a -> 'b) -> 'b -> 'b =
           let folded_left = preorder l f folded_cur in
             preorder r f folded_left
 
-let rec inorder: 'a. 'a tree -> ('b -> 'a -> 'b) -> 'b -> 'b =
+let rec inorder: 'a tree -> ('b -> 'a -> 'b) -> 'b -> 'b =
     fun tree f seed ->
       match tree with
       | Nil -> seed
@@ -21,7 +21,7 @@ let rec inorder: 'a. 'a tree -> ('b -> 'a -> 'b) -> 'b -> 'b =
           let folded_cur = f folded_left v in
             inorder r f folded_cur
 
-let rec postorder: 'a. 'a tree -> ('b -> 'a -> 'b) -> 'b -> 'b =
+let rec postorder: 'a tree -> ('b -> 'a -> 'b) -> 'b -> 'b =
     fun tree f seed ->
       match tree with
       | Nil -> seed
