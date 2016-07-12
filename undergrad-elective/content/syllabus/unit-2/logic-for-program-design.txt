@@ -1,0 +1,100 @@
+Logic for Program Design
+-------------------------
+
+Predicate Logic or First-Order Logic
+-------------------------------------
+Terms are the elementary units of composition in predicate logic. Terms 
+identify objects or things of interest. Terms may be constants or variables. 
+Terms that contain variables allow us to express generic facts over set of 
+objects or values. Terms also contain function terms representing a value 
+that depends on the values bound to the terms.
+
+Here are a few examples of terms:
+    constants: -3, 10, true, false
+    variables: x, y, p, q
+    functions: plus, min, and, not
+
+A predicate is a formula that assigns a property to a term, or captures the 
+relationship between terms. In this view, predicates are interpreted as 
+relations on a domain.
+
+A predicate is a function of zero or more variables or terms that return 
+Boolean values. Predicate may evaluate to true or false depending upon the 
+values of their arguments. 
+    
+Here are a few examples of predicates:
+    (1) Prime(x) subset N.
+    This is a unary relation, which is the subset of natural numbers that are
+    print
+
+    (2) P(x, y) subset N^2
+    This is a binary relation. which is the subset of pairs (x, y) of natural
+    numbers such that y = x^2: { (0, 0), (1, 1), (2, 4), (3, 9), (4, 16), ... }
+
+Predicate logic allows us to express relations that hold on some objects or all
+objects in a domain. In the same way, we may want to ascribe some property to 
+some objects in a set or to all objects in a set. First-order logic offers two
+quantifiers that serve this exact purpose.
+
+The 'universe of discourse', or 'universe' for short, also called the 
+'domain of discourse', is the set of objects of interest. The statements in 
+predicate logic state properties of objects drawn from a domain of discourse.
+
+The existential quantifier is used to express notions that informally mean 
+something like "there exists an element", or "there is at least one entity", 
+or "for some objects", with respect to specific domain of discourse. We will 
+write "exists" in these notes to mean the existential quantifier.
+
+In programming, for example, there are numerous cases where we would like to 
+assert that there are elements in the collection that satisfy certain 
+predicate. Logical arguments about loop termination may require the use of 
+existential quantifier.
+
+The universal quantifier is used to express that every element in the domain 
+of discourse satisfies certain predicate. It asserts that a predicate in the 
+scope of the universal quantifier holds for every value of a predicate 
+variable. We will write "for all" in these notes to mean universal quantifier.
+
+There are two facts one should keep in mind while using these quantifiers, 
+especially while asserting properties of program fragments. The point is to 
+understand what happens if we use quantification in the context of an empty 
+domain of discourse. That is, what is the interpretation of the following 
+formulas:
+    (a) exists x in {}. P(x)
+    (b) for all x in {}. P(x)
+where P is any predicate? 
+
+The convention is to interpret formula (a) as false, and formula (b) as true,
+irrespective of the formula P(x). In (a), it may be noted that it is impossible
+to find an element in an empty set, and therefore, "there exists an element" 
+must be false. In (b), we have what is called "vacuous truth" in mathematical 
+logic.
+
+Note that a predicate with variables is not a proposition whose truth is
+immediately determined. Only when the variables are substituted with values 
+can we evaluate the predicate. More generally, a predicate with variables can 
+be turned into a proposition by the following two methods:
+    (1) assign values to each of its variables
+    (2) quantify a variable with an existential or universal quantifier
+However, before attempting these operations, we need to ensure that we are 
+dealing with well-formed formulas.
+
+
+Atomic Formulas
+----------------
+An atomic formula is a predicate with zero or more arguments. Each argument is 
+either a variable or a constant. A formula in first-order logic may be defined 
+recursively as a tree structure, as follows:
+    A formula is a lead labeled by an atomic formula.
+    A formula is a node labeled by a 'not' operator whose single child is a
+      formula.
+    A formula is a node labeled by 'for all x' or 'there exists x' for some
+      variable x, and whose single child is a formula.
+    A formula is a node labeled by a binary Boolean operator with two children
+      both of which are formulas.
+
+An atomic formula all of whose arguments are constants is called a ground
+atomic formula.
+Nonground atomic formulas can have constants or variables as formula arguments,
+but at least one argument must be a variable.
+
