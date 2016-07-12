@@ -141,6 +141,137 @@ which essentially proves the point.
 It is simple to note that the notion of ordering can be extended to n-tuples.
 
 
+Predicates and Sets of States
+-----------------------------
+The state of a program is characterized by the values of variables used in the 
+program. The state of a program can therefore be viewed as a function which 
+maps identifiers to their values. 
+
+Predicates can effectively express relationships that hold among variables 
+used in a program. Thus, we may express certain properties that hold in 
+specific program states. Here is a predicate
+    Bounds(i, j, n) = 0 <= i < j+1 < n
+which states that in a particular state, variables i, j and n have values with
+specific properties. Predicates such as these are very commonly used in 
+specifying loop invariants, and postconditions.
+
+Usually we will identify a predicate with the set of states. Instead of saying 
+that a predicate P characterizes a set of states, we will refer to the states 
+in predicate P or states P, per se.
+
+We can compare the strengths of predicates based on the sizes of sets they 
+describe. A predicate that describes a larger state space is said to be weaker
+than a predicate that describes relatively smaller state space. If P and Q are
+two predicates on the same state space, and P is stronger than Q then P will
+describe only a subset of the states described by Q.
+
+This is stated formally in the following:
+predicate P(x1, ..., xn) is stronger (or more restrictive) than Q(x1, ..., xn)
+on the state space (x1, ..., xn) if
+    {(x1, ..., xn) | P(x1, ..., xn)} subset {(x1, ..., xn) | Q(x1, ..., xn)}
+
+When P is stronger than Q or has the same strength as Q, then P => Q.
+
+F (false) is the strongest predicate of all because it admits no states - 
+the state space is completely empty. T (true) is the weakest predicate because
+it trivially admits every state. 
+
+If P and Q are two predicates, then
+    P and Q is stronger than or same strength as P.
+    P and Q is stronger than or same strength as Q.
+    P or Q is weaker than or same strength as P.
+    P or Q is weaker than or same strength as Q.
+
+Examples:
+    x > 0 is stronger than x >= 0
+    forall j. 1 <= j < N: a(j) < a(j+1) is stronger than
+        forall j. 1 <= j < N: a(j) <= a(j+1)
+
+
+
+Functions
+----------
+If A and B are sets, then function f maps an element of A to an element of B.
+The notation f: A -> B is interpreted as a function from A to B. 
+
+In general, a function f: A -> B defines a subset of A x B, the Cartesian 
+product of the elements of A and B. A is the parent domain of f, and B is the 
+co-domain of f.
+
+It is possible that some f is not defined for all values in its parent domain. 
+Also, there may be values in its co-domain B which are not mapped by any value 
+in the parent domain. 
+
+if f is a function f: A -> B, and if y = f(x), then 
+    y is referred to as the image of x under f.
+    x is called the pre-image of y under f.
+
+The subset of A for which f is defined is referred to as the domain of f. This
+is referred to as 'dom f'. We write 
+    dom f subset A.
+and more formally,
+    dom f = { x in A | exists y in B. y = f(x) }
+
+The subset of B for which f is defined is referred to as the 'range of f'. 
+We write 
+    range f subset Y.
+and more formally,
+    range f = {y in B | exists x in A. y = f(x) }
+
+Note that range is a subset of B while y is an image of x under f.
+
+Partial functions
+------------------
+It is possible to have functions that are not defined over all elements in the 
+parent domain. Such functions are called partial functions. We write 
+    f: A |-> B 
+to mean f is a partial function from A to B. Note that in the case of partial
+functions
+    dom(f) subset A.
+
+If dom(f) = A then f is a total function.
+
+
+Classification of functions
+----------------------------
+Injective or one-to-one functions
+    every element in its domain has a distinct image
+    if f(x1) = f(x2) => (x1 = x2)
+
+Surjective or onto functions
+    every element y in the range f is an image of some x in A.
+
+Bijective or one-to-one correspondence functions
+    A function f: A -> B is bijctive if it is injective and surjective.
+    All elements in the domain have distinct images and every y in B is the
+       image of some x in A.
+
+
+Identity function
+------------------
+An identity function f: A -> A defined by f(x) = x associates each element 
+in X with itself. It is denoted id(X).
+   id(X) = { (x, x) | x in X }
+Identity function is a bijection.
+
+
+Constant function
+------------------
+A function f: A -> B is a constant function if 
+    {(x, c) | forall x in A } for a fixed c in B.
+
+
+Characteristic function
+------------------------
+A characteristic function of A subset X where X is non-empty tells if an 
+element x is in A or not.
+    { (x, y) in (X x {0, 1}) | (x in A => (y = 1)) and (x not in A => (y = 0)) } 
+
+Characteristic function CF: X -> {0, 1}        
+    CF(x) = 1 if x in A
+    CF(x) = 0 if x not in A.
+
+
 Sequences and Bags 
 -------------------
 
