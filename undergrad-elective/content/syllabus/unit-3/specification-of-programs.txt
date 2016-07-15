@@ -1,0 +1,91 @@
+The word 'specification' means many things to many people. In program design,
+a specification unambiguously states the interfaces between different
+components of a program. For the client or the user of an interface, its 
+specification provides information required to use the the interface, without 
+requiring to know the implementation details. For the implementor of the 
+components, it provides precise information required to create a correct 
+version, without needing to bother about the actual users.
+
+In program verification, a specification is a formal expression against which 
+the program's correctness is proved. Verification is the process of 
+demonstrating consistency between a program and its specification.
+
+In program validation, specification may be used to generate test cases for 
+black-box testing. It may also be used for unit testing and integration 
+testing. 
+
+At another extreme, specification will also serve the purpose of more precise 
+program documentation.
+
+Thus, the term program specification may refer to
+(1) a statement of requirements for a program
+(2) a statement about a design for a program
+(3) a formal statement of conditions or properties against which the program
+    can be verified.
+
+Here is an example showing a hypothetical (incomplete) specification of multiset data structure.
+
+Multiset
+  interface
+    new -> MSet
+    insert -> MSet -> E -> MSet
+    isEmpty -> MSet -> bool
+    size -> MSet -> int
+    count -> MSet -> E -> int
+    delete -> MSet -> E -> MSet
+  
+  consistency forall ms: MSet. e, e1, e2: E.
+    isEmpty(new) = true
+    isEmpty(insert(ms, e)) = false
+    
+    size(new) = 0
+    size(insert(ms, e)) = size(ms) + 1
+
+    count(new, e) = 0
+    count(insert(ms, e1), e2) = count(ms, e2) + (e1 = e2 ? 1 : 0)
+
+    delete(new, e1) = new
+    delete(insert(ms, e1), e2) = (e1 = e2 ? ms : insert(delete(ms, e2), e1))
+
+
+Preconditions
+--------------
+Sequential programs define a function from inputs to outputs. The preconditions
+specify constraints on various aspects of the data. Such constraints may 
+restrict domains and ranges, specify bounds on the size of inputs, and 
+the structure of the input. Precondition is also called an input assertion.
+
+More formally, precondition is a predicate which characterizes the initial 
+states for the specified computation is well-defined. We will denote a 
+precondition by the letter Q. We shall use subscripts for readability.
+
+Some of the different kinds of preconditions that we specify include the following.
+    Problem size
+    -------------
+    size of the array; size of the indices. We generally specify the lower bound and the upper bound.
+
+    Bounds for variables
+    ---------------------
+    domain and ranges of inputs.
+
+    Properties and assumptions about inputs
+    -----------------------------------------
+    For example, for binary search to work, the input must be already sorted.
+    For heap-sort, the heap property must be maintained.
+    
+
+Postconditions
+
+Loop invariants
+
+Variant functions
+
+The state model of programs
+
+Hoare triples
+
+Partial and total correctness
+
+Weakest precondition
+
+Guarded commands
