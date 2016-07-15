@@ -75,8 +75,30 @@ Some of the different kinds of preconditions that we specify include the followi
     
 
 Postconditions
+---------------
+A postcondition specifies the precise relationships that should hold among 
+program variables after a particular unit of computation completes. 
+
+Postconditions play a few different roles in program development:
+    (1) it can specify what the program fragment should compute
+    (2) it can assist in constructive development of programs
+    (3) it can be helpful in developing a proof of program correctness 
+
 
 Loop invariants
+----------------
+Loop invariants are properties that are established at the beginning of a 
+loop (at the initialization of loop variables), maintained with each 
+iteration of the loop, and held true upon termination of the loop.
+
+A loop invariant is, therefore, both a precondition and postcondition of a 
+loop. As a result, postconditions can be used to reason about the correctness
+of a loop.
+ 
+It can be serve as a basis for the constructive derivation of the loop body. 
+When used in conjunction with the weakest preconditions, it can provide
+firm constraints on the loop construction.
+
 
 Variant functions
 
