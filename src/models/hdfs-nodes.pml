@@ -1,7 +1,9 @@
 /**
- * spin -cC hdfs-nodes.pml
- * spin -a hdfs-nodes.pml; cc -DSAFETY pan.c -o pan; pan;
- * spin -cC -k hdfs-nodes.pml.trail hdfs-nodes.pml
+ * Instruction to run simulation:
+ *     spin -cC hdfs-nodes.pml
+ * Instructions for model checking:
+ *     spin -a hdfs-nodes.pml; cc -DSAFETY pan.c -o pan; pan;
+ *     spin -cC -k hdfs-nodes.pml.trail hdfs-nodes.pml
  *
 **/
 
@@ -73,6 +75,6 @@ init {
 
 /**
   Check - what is the effect of running another instance of the datanode
-        process on a new line 53?
+        process on a new line 59?
         Can you reason about the system before simulating and model checking?
 **/
