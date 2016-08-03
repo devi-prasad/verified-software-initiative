@@ -74,10 +74,8 @@ Facebook -
     Flow    https://flowtype.org/
     pfff    https://github.com/facebook/pfff/wiki/Main
 
-Twitter
 Jane Street
-Google
-Microsoft
+
 Docker
     Mirage OS.     https://mirage.io/
 Citrix uses OCaml in XenServer

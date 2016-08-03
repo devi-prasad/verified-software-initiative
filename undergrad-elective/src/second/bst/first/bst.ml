@@ -8,7 +8,7 @@ let rec preorder tree =
     match tree with
     | Nil -> ()
     | Node (l, v, r) -> 
-      Printf.printf "    val: %s\n"  v;
+      Printf.printf "    val: %d\n"  v;
       preorder l;
       preorder r
 
