@@ -7,9 +7,19 @@
  *
 **/
 
-#define p (client@reset_requested)
-
 mtype = { REQ, RESET, BEGIN, DATA, DONE };
+
+/*
+ * We wish to express the requirement that once the client sends a RESET 
+ * request, the server will eventually respond with a DONE message.
+ *
+ */
+ltl resetA { []((client:reset_requested) -> <>(server:reset_served) )} 
+
+#define there_is_data (server:size > server:cur)
+ltl resetB { []((there_is_data && client:reset_requested) -> 
+                                                  <>(server:reset_served) )} 
+
 
 inline count_data_frames(n)
 {
@@ -22,20 +32,25 @@ inline count_data_frames(n)
 }
 
 proctype server(chan req; chan resp) {
-    int size = 0, cur = 0;
-
+    byte size = 0, cur = 0;
+    bool reset_served = false;
+    
     xr req;
     xs resp;
 
 end:
+accept:
     do
     :: req?REQ(_) -> {
-        count_data_frames(size)
+        reset_served = false;
         cur = 0;
+        count_data_frames(size)
         resp!BEGIN(size);
     }
     :: req?RESET(_) -> {
+        reset_served = true;
         resp!DONE(cur)
+
         break;
     }
     :: (cur < size) -> {
@@ -49,10 +64,12 @@ end:
     od
 }
 
+
 proctype client(chan req; chan sresp)
 {
-    bool idle = true, reset_requested = false;
+    bool reset_requested = false;
     int size = 0, prev = 0, cur = 0;
+    bool idle = true;
 
     xs req;
     xr sresp;
@@ -72,10 +89,6 @@ proctype client(chan req; chan sresp)
         prev = cur;
     }
     :: sresp?DONE(cur) -> {
-        idle = true;
-        prev = 0;
-        cur = 0;
-        size = 0;
         break;
     }
     :: (size > 0 && !reset_requested) -> {
@@ -85,6 +98,7 @@ proctype client(chan req; chan sresp)
     od
 
 end:
+accept:
 }
 
 init {
