@@ -1,0 +1,62 @@
+\documentclass{beamer}
+\usepackage[latin1]{inputenc}
+\usetheme{Warsaw}
+\title[LaTeX presentation using Beamer]{SPIN \\Model Checking Distributed Software Systems}
+\author{M. Devi Prasad}
+\institute{School of Information Sciences\\Manipal University, Manipal}
+\date{August 14, 2016}
+\usepackage{mathpazo}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section*{Outline}
+    \frame{\tableofcontents}
+
+\section{Motivation}
+  \subsection{Goals}
+    \begin{frame}{Goals}
+      \begin{itemize}
+        \item Present basic ideas of formal verification
+        \item Introduce model checking as a formal method
+        \item Demonstrate ideas with SPIN
+      \end{itemize}
+    \end{frame}
+
+  \subsection{Background}
+    \begin{frame}{Three Short Stories}
+      Three short stories
+    \end{frame}
+
+\section{Formal Methods}
+  \subsection{Software Verification}
+    \begin{frame}{Software Verification}
+    \end{frame}
+    \begin{frame}{Formal Methods}
+      Mathematics and logic
+    \end{frame}
+
+  \subsection{Model Checking}
+    \begin{frame}{Model Checking}
+    \end{frame}
+
+  \subsection{SPIN Model Checker}
+    \begin{frame}{History}
+    \end{frame}
+  
+  \subsection{Verified Software Intiative}
+    \begin{frame}{Verified Software Initiative Manifesto}
+    \end{frame}
+
+
+\section{Conclusion}
+  \subsection{Key Takeaway}
+    \begin{frame}{Important Takeaway}
+    \end{frame}
+  \subsection{Q and A}
+    \begin{frame}{Questions?}
+    \end{frame}
+\end{document}
