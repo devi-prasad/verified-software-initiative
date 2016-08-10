@@ -1,12 +1,14 @@
 /**
  * Instruction to run simulation:
- *     spin -cC sp.pml
+ *     spin -cC sp-ltl.pml
  * Instructions for model checking:
- *     spin -a sp.pml; cc -DSAFETY pan.c -o pan; pan;
- *     spin -p -cC -k sp.pml.trail sp.pml
+ *     spin -a -o3 sp-ltl.pml; cc -DSAFETY pan.c -o pan; pan -a;
+ *     spin -l -p -cC -k sp-ltl.pml.trail sp-ltl.pml
  *
 **/
 
+
+ltl p1 { []( (client:idle == false) -> <>(client:size > 0) ) }
 
 mtype = { REQ, BEGIN, DATA, DONE };
 
@@ -19,7 +21,7 @@ inline count_data_frames(n)
     fi
 }
 
-proctype server(chan conn)
+proctype server(chan conn) 
 {
     byte size = 0, cur = 0;
 
@@ -72,6 +74,6 @@ end:
 init {
     chan conn = [4] of { mtype, int }
 
-	run server(conn);
 	run client(conn);
+    run server(conn);
 }
