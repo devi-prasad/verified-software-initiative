@@ -2,7 +2,7 @@
  * Instruction to run simulation:
  *     spin -cC sp-rest.pml
  * Instructions for model checking:
- *     spin -a sp-reset.pml; cc -DSAFETY pan.c -o pan; pan;
+ *     spin -a sp-reset.pml; cc -DNOREDUCE pan.c -o pan; pan -a -N progress;
  *     spin -cC -k sp-reset.pml.trail sp-reset.pml
  *
 **/
@@ -10,15 +10,26 @@
 mtype = { REQ, RESET, BEGIN, DATA, DONE };
 
 /*
- * We wish to express the requirement that once the client sends a RESET 
- * request, the server will eventually respond with a DONE message.
+ * an idle client will eventually make a request and recieve all data frames
+ * provided the client does not RESET in between.
  *
  */
-ltl resetA { []((client:reset_requested) -> <>(server:reset_served) )} 
+ltl progress { ( (client:idle == false) -> 
+                    <>((client:size > 0 && 
+                        client:cur == client:size &&
+                        client:idle == true)) ->
+                                (server:reset_served == false) )} 
+
+
+/*
+ * once the client sends a RESET request, the server will eventually respond 
+ * with a DONE message.
+ */
+ltl resetA { ( (client:reset_requested) -> <>(server:reset_served) )} 
 
 #define there_is_data (server:size > server:cur)
-ltl resetB { []((there_is_data && client:reset_requested) -> 
-                                                  <>(server:reset_served) )} 
+ltl resetB { ( (there_is_data && client:reset_requested) -> 
+                                                  []<>(server:reset_served) )} 
 
 
 inline count_data_frames(n)
@@ -27,7 +38,6 @@ inline count_data_frames(n)
     :: true -> n = 2;
     :: true -> n = 5;
     :: true -> n = 9;
-    :: true -> n = 11;
     fi
 }
 
@@ -49,8 +59,9 @@ accept:
     }
     :: req?RESET(_) -> {
         reset_served = true;
+        size = 0;
         resp!DONE(cur)
-
+        cur = 0;
         break;
     }
     :: (cur < size) -> {
@@ -58,8 +69,8 @@ accept:
         resp!DATA(cur)
     }
     :: (size > 0 && cur == size) -> {
-        resp!DONE(cur)
-        break;
+        resp!DONE(cur);
+        size = 0;
     }
     od
 }
@@ -89,6 +100,9 @@ proctype client(chan req; chan sresp)
         prev = cur;
     }
     :: sresp?DONE(cur) -> {
+        idle = true;
+        size = 0;
+        reset_requested = false;
         break;
     }
     :: (size > 0 && !reset_requested) -> {
@@ -96,9 +110,7 @@ proctype client(chan req; chan sresp)
         reset_requested = true;
     }
     od
-
 end:
-accept:
 }
 
 init {
@@ -106,5 +118,5 @@ init {
     chan creq  = [1] of { mtype, int };
 
     run client(creq, sresp);
-	run server(creq, sresp);
+    run server(creq, sresp);
 }
