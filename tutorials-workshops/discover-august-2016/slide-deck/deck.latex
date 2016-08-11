@@ -7,6 +7,13 @@
 \date{August 14, 2016}
 \usepackage{mathpazo}
 
+\newcommand\tab[1][4mm]{\hspace*{#1}}
+\usepackage{amsmath}%
+\usepackage{amssymb}%
+\usepackage{wasysym}%
+
+%%\setbeamercolor{math text}{fg=black}
+
 \begin{document}
 
 \begin{frame}
@@ -27,12 +34,28 @@
     \end{frame}
 
   \subsection{Background}
-    \begin{frame}{Three Short Stories}
-      Three short stories
+    \begin{frame}{Three Catastrophes}
+      \begin{itemize}
+        \item[$\blacktriangleright$] Loss of lives due to Toyota Unintended Acceleration
+        \vspace*{1.5mm}\\
+        \item[$\blacktriangleright$] Ethical bankruptcy in Volkswagen Emission Fraud
+        \vspace*{1.5mm}\\
+        \item[$\blacktriangleright$] Linux kernel vulnerability - keyring bug
+      \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{Toyota Unintended Acceleration}
+    A horrifying story of pathetically poor engineering and corrupt leadership.
+    \end{frame}
+    \begin{frame}{Volkswagen Emission Fraud}
+    Dishonest and fraudulent practices of multinational automotive industries.
+    \end{frame}
+    \begin{frame}{Linux Kernel Keyring Bug}
+    An embarrassing bug that confirms and vindicates Dijkstra's statement!
     \end{frame}
 
 \section{Introduction}
-  \subsection{Verification}
+  \subsection{Informal Methods}
     \begin{frame}{Informal Methods - Testing}
     \begin{columns}
       \column{0.5\textwidth}
@@ -47,7 +70,8 @@
       very effectively to show the presence of bugs but never to show their absence."
     \end{columns}
     \end{frame}
-
+  
+  \subsection{Formal Methods}
     \begin{frame}{Formal Methods}
       Mathematics and logic
     \end{frame}
@@ -106,7 +130,7 @@
     of reactive programs.
     \end{frame}
 
-
+  \subsection{Model Checking}
     \begin{frame}{Model Checking}
        Check that the model satisfies the properties.
     \end{frame}
@@ -167,7 +191,46 @@
         \end{figure}
       \end{columns}  
   \end{frame}
-  \subsection{Verified Software Intiative}
+
+  \subsection{Foundations}
+    \begin{frame}{Automata and Logic}
+      A finite state automaton is a quintuple $\mathrm{(S, s_0, L, T, F)}$, where\vspace*{2mm}\\
+        \tab $\mathrm{S}$ \tab[3mm] is a finite set of \emph{states}\vspace*{1.2mm}\\
+        \tab $\mathrm{s_0}$ \tab[2mm] is the \emph{initial state}, $s_0 \in S$\vspace*{1.2mm}\\
+        \tab $\mathrm{L}$ \tab[3mm] is a finite set of \emph{labels}\vspace*{1.2mm}\\
+        \tab $\mathrm{T}$ \tab[3mm] is a set of \emph{transitions}, 
+                    $\mathrm{T \subseteq (S \times L \times S)}$, and\vspace*{1.2mm}\\
+        \tab $\mathrm{F}$ \tab[3mm] is a set of \emph{final} states, $\mathrm{F \subseteq S}$\vspace*{1.2mm}\\
+    \end{frame}
+
+    \begin{frame}{Omega Run}
+      \begin{itemize}
+        \item A finite state machine models terminating executions
+        \item A finite state machine cannot decide on acceptance or
+               non-acceptance of ongoing, potentially infinite executions.\vspace*{2mm}\\
+        \item<2-> An infinite run is called an $\omega$-run or \emph{omega run}
+      \end{itemize}
+    \end{frame}
+    \begin{frame}{Omega Acceptance}
+      \begin{itemize}
+        \item if $\sigma$ is an infinite run, $\sigma^{\omega}$ represents the set of
+              states that appear infinitely often within $\sigma$'s transitions\vspace*{2mm}\\
+        \item<2-> $\sigma^{+}$ represents the set of states that appear only finitely
+                  many times.
+      \end{itemize}
+    \end{frame}
+    \begin{frame}{Omega Acceptance}
+      \begin{itemize}
+        \item An accepting $\omega$-run of finite state automaton $\mathrm{(S, s_0, L, T, F)}$
+              is any infinite run $\sigma$ such that ${\exists \mathrm{s_{f}.\,s_{f} \in F \wedge s_f} \in \sigma^\omega}$\vspace*{2mm}\\
+      \end{itemize}
+      An infinite run is accepted if and only if some state in F is visited infinitely often in the run.
+    \end{frame}
+    \begin{frame}{}
+    \end{frame}
+
+\section{Verified Software Intiative}
+  \subsection{The Manifesto}
     \begin{frame}{Verified Software Initiative Manifesto}
     \end{frame}
     \begin{frame}{Sir C. A. Richard Hoare}
