@@ -93,6 +93,20 @@
       \end{itemize}
     \end{frame}
 
+    \begin{frame}{Properties of Reactive Programs}
+      \begin{itemize}
+        \item Safety properties\vspace*{1mm}\\
+                \textcolor{gray}{"nothing bad ever happens"}
+        \item[]
+        \item Liveness properties\vspace*{1mm}\\
+               \textcolor{gray}{"something good will eventually happen"}
+               \vspace*{3mm}\\
+      \end{itemize}
+    These properties are defined only over infinite execution sequences
+    of reactive programs.
+    \end{frame}
+
+
     \begin{frame}{Model Checking}
        Check that the model satisfies the properties.
     \end{frame}
