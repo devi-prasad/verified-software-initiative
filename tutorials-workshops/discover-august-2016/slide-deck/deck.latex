@@ -1,7 +1,7 @@
 \documentclass{beamer}
 \usepackage[latin1]{inputenc}
 \usetheme{Warsaw}
-\title[LaTeX presentation using Beamer]{SPIN \\Model Checking Distributed Software Systems}
+\title[DISCOVER 2016]{SPIN \\Model Checking Distributed Software Systems}
 \author{M. Devi Prasad}
 \institute{School of Information Sciences\\Manipal University, Manipal}
 \date{August 14, 2016}
@@ -31,26 +31,105 @@
       Three short stories
     \end{frame}
 
-\section{Formal Methods}
-  \subsection{Software Verification}
-    \begin{frame}{Software Verification}
-    \end{frame}
+\section{Model Checking}
+  \subsection{Verification}
     \begin{frame}{Formal Methods}
       Mathematics and logic
     \end{frame}
-
-  \subsection{Model Checking}
+    
+    \begin{frame}{Program Verification}
+        Checking that program meets the requirements.
+    \end{frame}
+    
     \begin{frame}{Model Checking}
+       Check that the model satisfies the properties.
     \end{frame}
-
-  \subsection{SPIN Model Checker}
-    \begin{frame}{History}
+    \begin{frame}{Amir Pnueli}
+      \begin{columns}
+        \column{0.5\textwidth}
+          \begin{figure}[ht]
+            \begin{center}
+              \includegraphics[height=2.45in]{../../../pictures/AmirPnueli.jpg}
+             \end{center}
+          \end{figure}
+        \column{0.5\textwidth}
+            "In mathematics, logic is static \ldots When one designs a dynamic computer system that has to react to ever changing conditions, \ldots one cannot design the system based on a static view. It is necessary to characterize and describe dynamic behaviors that connect entities, events, and reactions at different time points. Temporal Logic deals therefore with a dynamic view of the world that evolves over time."
+      \end{columns}
     \end{frame}
-  
+    \begin{frame}{Leslie Lamport}
+      \begin{columns}
+        \column{0.5\textwidth}
+          \begin{figure}[ht]
+            \begin{center}
+              \includegraphics[height=2.45in]{../../../pictures/LeslieLamport.jpg}
+             \end{center}
+          \end{figure}
+        \column{0.5\textwidth}
+            What Good Is Temporal Logic?
+      \end{columns}
+    \end{frame}
+    \begin{frame}{Edmund Clarke}
+      \begin{columns}
+        \column{0.5\textwidth}
+          \begin{figure}[ht]
+            \begin{center}
+              \includegraphics[height=2.45in]{../../../pictures/EdmundClarke.jpg}
+             \end{center}
+          \end{figure}
+        \column{0.5\textwidth}
+            Model Checking
+      \end{columns}
+    \end{frame}
+    \begin{frame}{{\hspace{0.1\textwidth}}Joseph Sifakis {\hspace{0.25\textwidth}} Allen Emerson}
+      \begin{columns}
+        \column{0.5\textwidth}
+          \begin{figure}[ht]
+            \begin{center}
+              \includegraphics[height=2.45in]{../../../pictures/JosephSifakis.jpg}
+             \end{center}
+          \end{figure}
+        \column{0.5\textwidth}
+        \begin{figure}[ht]
+          \begin{center}
+            \includegraphics[height=2.45in]{../../../pictures/AllenEmerson-Color.jpg}
+           \end{center}
+        \end{figure}
+      \end{columns}  
+  \end{frame}
   \subsection{Verified Software Intiative}
     \begin{frame}{Verified Software Initiative Manifesto}
     \end{frame}
-
+    \begin{frame}{Sir C. A. Richard Hoare}
+      \begin{columns}
+        \column{0.5\textwidth}
+          \begin{figure}[ht]
+            \begin{center}
+              \includegraphics[height=2in]{../../../pictures/SirTonyHoare.jpg}
+             \end{center}
+          \end{figure}
+        \column{0.5\textwidth}
+          "The teams of experimental scientists will require education in the relevant 
+          theories, and training in the use of the best available tools. Would you be 
+          prepared to design and deliver Master's courses on program verification?
+          Would it be appropriate to set Master's projects to verify small portions 
+          of the challenge material held in the repository?"
+        \end{columns}
+    \end{frame}
+    \begin{frame}{Sir C. A. Richard Hoare}
+      \begin{columns}
+        \column{0.5\textwidth}
+          \begin{figure}[ht]
+            \begin{center}
+              \includegraphics[height=2in]{../../../pictures/SirTonyHoare.jpg}
+             \end{center}
+          \end{figure}
+        \column{0.5\textwidth}
+          "Education in technology should begin at the undergraduate level. Would you be
+           prepared to teach the use of specifications and assertions as a routine aid to 
+           program testing, as they are currently being used in Industry? Would you use them 
+           yourself as an aid to marking the students' practical assignments?"
+        \end{columns}
+    \end{frame}
 
 \section{Conclusion}
   \subsection{Key Takeaway}
