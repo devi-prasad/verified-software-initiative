@@ -31,16 +31,68 @@
       Three short stories
     \end{frame}
 
-\section{Model Checking}
+\section{Introduction}
   \subsection{Verification}
+    \begin{frame}{Informal Methods - Testing}
+    \begin{columns}
+      \column{0.5\textwidth}
+        \begin{figure}[ht]
+          \begin{center}
+            \includegraphics[height=2.45in]{../../../pictures/EdsgerDijkstra.jpg}
+          \end{center}
+        \end{figure}
+      \column{0.5\textwidth}
+      {\Large{Program Synthesis.\\Guarded Commands.\vspace*{1.5mm}\\Nondeterminacy.}}\vspace*{5mm}\\
+      "The first moral of the story is that program testing can be used 
+      very effectively to show the presence of bugs but never to show their absence."
+    \end{columns}
+    \end{frame}
+
     \begin{frame}{Formal Methods}
       Mathematics and logic
     \end{frame}
     
-    \begin{frame}{Program Verification}
-        Checking that program meets the requirements.
+    \begin{frame}{Reactive Systems}
+      \begin{itemize}
+        \item<1->A reactive program's role is to maintains an ongoing interaction with its environment rather than to compute a final value and terminate.
+        \item<2-> Concurrency is a fundamental element in reactive programs.
+        \item<3> By definition, a reactive program runs concurrently with its environment.
+      \end{itemize}
     \end{frame}
     
+    \begin{frame}{Examples of Reactive Systems}
+      \begin{itemize}
+        \item Web servers and Web browsers
+        \item Embedded systems software
+        \item Operating systems
+        \item Control programs
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Properties of Reactive Programs}
+      \begin{itemize}
+        \item<1-> Safety properties\vspace*{1mm}\\
+                \textcolor{blue}{"nothing bad ever happens"}
+        \item[]
+        \item<2-> Liveness properties\vspace*{1mm}\\
+               \textcolor{blue}{"something good will eventually happen"}
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Properties of Reactive Programs}
+      \begin{itemize}
+        \item<1-> Safety properties\vspace*{1mm}\\
+                \textcolor{gray}{"nothing bad ever happens"}
+                \vspace*{1mm}\\
+                \textcolor{blue}{no deadlocks, no abnormal termination}\\
+        \item[]
+        \item<2-> Liveness properties\vspace*{1mm}\\
+               \textcolor{gray}{"something good will eventually happen"}
+               \vspace*{1mm}\\
+               \textcolor{blue}{progress, fairness}
+      \end{itemize}
+    \end{frame}
+
     \begin{frame}{Model Checking}
        Check that the model satisfies the properties.
     \end{frame}
@@ -53,7 +105,12 @@
              \end{center}
           \end{figure}
         \column{0.5\textwidth}
-            "In mathematics, logic is static \ldots When one designs a dynamic computer system that has to react to ever changing conditions, \ldots one cannot design the system based on a static view. It is necessary to characterize and describe dynamic behaviors that connect entities, events, and reactions at different time points. Temporal Logic deals therefore with a dynamic view of the world that evolves over time."
+            "In mathematics, logic is static \ldots When one designs a dynamic computer 
+            system that has to react to ever changing conditions, \ldots one cannot design 
+            the system based on a static view. It is necessary to characterize and describe 
+            dynamic behaviors that connect entities, events, and reactions at different time 
+            points. Temporal Logic deals therefore with a dynamic view of the world that 
+            evolves over time."
       \end{columns}
     \end{frame}
     \begin{frame}{Leslie Lamport}
