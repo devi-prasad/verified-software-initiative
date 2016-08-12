@@ -3,14 +3,15 @@
 \usetheme{Warsaw}
 \title[DISCOVER 2016]{SPIN \\Model Checking Distributed Software Systems}
 \author{M. Devi Prasad}
-\institute{School of Information Sciences\\Manipal University, Manipal}
+\institute{School of Information Sciences\\Manipal University, Manipal\vspace*{2mm}\\
+           \textcolor{blue}{devi.prasad@manipal.edu}}
 \date{August 14, 2016}
 \usepackage{mathpazo}
 
 \newcommand\tab[1][4mm]{\hspace*{#1}}
-\usepackage{amsmath}%
-\usepackage{amssymb}%
-\usepackage{wasysym}%
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{wasysym}
 
 %%\setbeamercolor{math text}{fg=black}
 
@@ -27,7 +28,7 @@
   \subsection{Goals}
     \begin{frame}{Goals}
       \begin{itemize}
-        \item Present basic ideas of formal verification
+        \item Motivate the audience to formal verification of software
         \item Introduce model checking as a formal method
         \item Demonstrate ideas with SPIN
       \end{itemize}
@@ -36,22 +37,22 @@
   \subsection{Background}
     \begin{frame}{Three Catastrophes}
       \begin{itemize}
-        \item[$\blacktriangleright$] Loss of lives due to Toyota Unintended Acceleration
+        \item Loss of lives due to Toyota unintended acceleration defect \textcolor{red} {(2002 - 2014)}
         \vspace*{1.5mm}\\
-        \item[$\blacktriangleright$] Ethical bankruptcy in Volkswagen Emission Fraud
+        \item Ethical bankruptcy in Volkswagen emission fraud {\textcolor{red}{(2015)}}
         \vspace*{1.5mm}\\
-        \item[$\blacktriangleright$] Linux kernel vulnerability - keyring bug
+        \item Linux kernel vulnerability - keyring bug {\textcolor{red}{(2016)}}
       \end{itemize}
     \end{frame}
     
     \begin{frame}{Toyota Unintended Acceleration}
-    A horrifying story of pathetically poor engineering and corrupt leadership.
+    A horrifying story of corrupt leadership and pathetic engineering.
     \end{frame}
     \begin{frame}{Volkswagen Emission Fraud}
-    Dishonest and fraudulent practices of multinational automotive industries.
+    Dishonest and fraudulent practices of automotive industries.
     \end{frame}
     \begin{frame}{Linux Kernel Keyring Bug}
-    An embarrassing bug that confirms and vindicates Dijkstra's statement!
+    An embarrassing bug that confirms Dijkstra's insightful observations.
     \end{frame}
 
 \section{Introduction}
