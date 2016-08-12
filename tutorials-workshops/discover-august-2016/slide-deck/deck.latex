@@ -12,6 +12,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{wasysym}
+\usepackage{hyperref}
 
 %%\setbeamercolor{math text}{fg=black}
 
@@ -26,15 +27,22 @@
 
 \section{Motivation}
   \subsection{Goals}
+    \begin{frame}{}{}
+      \begin{center}{\Huge{Goals}}\end{center}
+    \end{frame}
     \begin{frame}{Goals}
       \begin{itemize}
         \item Motivate the audience to formal verification of software
         \item Introduce model checking as a formal method
         \item Demonstrate ideas with SPIN
+        \item Advocate the manifesto of the verified software initiative
       \end{itemize}
     \end{frame}
 
   \subsection{Background}
+    \begin{frame}{}{}
+      \begin{center}{\Huge{Background}}\end{center}
+    \end{frame}
     \begin{frame}{Three Catastrophes}
       \begin{itemize}
         \item Loss of lives due to Toyota unintended acceleration defect \textcolor{red} {(2002 - 2014)}
@@ -44,19 +52,30 @@
         \item Linux kernel vulnerability - keyring bug {\textcolor{red}{(2016)}}
       \end{itemize}
     \end{frame}
-    
+
     \begin{frame}{Toyota Unintended Acceleration}
     A horrifying story of corrupt leadership and pathetic engineering.
+    \vspace*{3mm}\\
+    Pages 28 to 32 in Bookout\_v\_Toyota\_Barr\_REDACTED.
     \end{frame}
     \begin{frame}{Volkswagen Emission Fraud}
     Dishonest and fraudulent practices of automotive industries.
+    \begin{figure}[ht]
+      \begin{center}
+        \includegraphics[height=2.45in]{../../../pictures/sketch-VW.png}
+      \end{center}
+    \end{figure}
     \end{frame}
     \begin{frame}{Linux Kernel Keyring Bug}
-    An embarrassing bug that confirms Dijkstra's insightful observations.
+      An embarrassing bug that confirms Dijkstra's insightful observations.
+      \vspace*{5mm}\\
+      \textcolor{darkgray}{"The join\_session\_keyring function in security/keys/process\_
+      keys.c in the Linux kernel before 4.4.1 mishandles object references in a certain error 
+      case, which allows local users to gain privileges or cause a denial of service (integer 
+      overflow and use-after-free) via crafted keyctl commands."}
+      \vspace*{4mm}\\
+      \url{http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2016-0728}\\
     \end{frame}
-
-\section{Introduction}
-  \subsection{Informal Methods}
     \begin{frame}{Informal Methods - Testing}
     \begin{columns}
       \column{0.5\textwidth}
@@ -66,15 +85,50 @@
           \end{center}
         \end{figure}
       \column{0.5\textwidth}
-      {\Large{Program Synthesis.\\Guarded Commands.\vspace*{1.5mm}\\Nondeterminacy.}}\vspace*{5mm}\\
+      {\Large{Edsger Dijkstra}}\vspace*{6mm}\\
       "The first moral of the story is that program testing can be used 
       very effectively to show the presence of bugs but never to show their absence."
     \end{columns}
     \end{frame}
-  
+    
+    \begin{frame}{Two Superior Solutions}
+      \begin{itemize}
+        \item NASA - software for Mars rover \emph{Curiosity} \textcolor{blue} {(2012)}
+        \vspace*{1.5mm}\\
+        \item Amazon - formal verification of cloud service {\textcolor{blue}{(2011)}}
+        \vspace*{1.5mm}\\
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{SPIN Model Checker}
+      \begin{columns}
+        \column{0.5\textwidth}
+          \begin{figure}[ht]
+            \begin{center}
+              \includegraphics[height=2.4in]{../../../pictures/GerardHolzmann.png}
+            \end{center}
+          \end{figure}
+        \column{0.55\textwidth}
+        {\Large{Mars Code}}\\
+        CACM, Vol. 57 No. 2, Pages 64-73, February 2014\vspace*{4mm}\\
+        "Informally, Spin takes the role of a demonic process scheduler, trying to find 
+         system executions that violate user-defined requirements."
+      \end{columns}  
+    \end{frame}
+    \begin{frame}{Verification of Amazon AWS}{}
+        {\Large{How Amazon Web Services Uses Formal Methods}}
+        CACM, Vol. 58, No. 4, Pages 66-73. April 2015.
+        \begin{figure}[ht]
+          \begin{center}
+            \includegraphics[width=\textwidth]{../../../pictures/amazon-fm.jpg}
+          \end{center}
+        \end{figure}
+    \end{frame}
+
+\section{Introduction}
   \subsection{Formal Methods}
-    \begin{frame}{Formal Methods}
-      Mathematics and logic
+    \begin{frame}{}{}
+      \begin{center}{\Huge{Model Checking\vspace*{5mm}\\-- Theory and Practice --}}\end{center}
     \end{frame}
     
     \begin{frame}{Reactive Systems}
@@ -161,7 +215,11 @@
              \end{center}
           \end{figure}
         \column{0.5\textwidth}
-            What Good Is Temporal Logic?
+            What Good Is Temporal Logic?\vspace*{6mm}\\
+            "We want to specify not that the program \emph{might} produce the right answer, 
+            but that it \emph{must} do so. Because many formalisms cannot express liveness 
+            properties, thay have led people to consider such 'possibility' properties 
+            instead."
       \end{columns}
     \end{frame}
     \begin{frame}{Edmund Clarke}
@@ -169,11 +227,16 @@
         \column{0.5\textwidth}
           \begin{figure}[ht]
             \begin{center}
-              \includegraphics[height=2.45in]{../../../pictures/EdmundClarke.jpg}
+              \includegraphics[height=2.4in]{../../../pictures/EdmundClarke.jpg}
              \end{center}
           \end{figure}
         \column{0.5\textwidth}
-            Model Checking
+          \begin{itemize}
+            \item Engineered world's first Model Checker.
+            \item Mentored the design of world's first symbolic model checker.
+            \item Contributed to the design of highly efficient theorem provers
+          \end{itemize} 
+
       \end{columns}
     \end{frame}
     \begin{frame}{{\hspace{0.1\textwidth}}Joseph Sifakis {\hspace{0.25\textwidth}} Allen Emerson}
@@ -194,6 +257,9 @@
   \end{frame}
 
   \subsection{Foundations}
+    \begin{frame}
+      \begin{center}\Huge{Automata and Logic}\end{center}
+    \end{frame}
     \begin{frame}{Automata and Logic}
       A finite state automaton is a quintuple $\mathrm{(S, s_0, L, T, F)}$, where\vspace*{2mm}\\
         \tab $\mathrm{S}$ \tab[3mm] is a finite set of \emph{states}\vspace*{1.2mm}\\
@@ -232,7 +298,11 @@
 
 \section{Verified Software Intiative}
   \subsection{The Manifesto}
+    \begin{frame}{}{}
+      \begin{center}{\Huge{Verified Software Initiative}}\end{center}
+    \end{frame}
     \begin{frame}{Verified Software Initiative Manifesto}
+      The Verified Software Initiative is a long-term research program directed at the challenge of verifying software to the highest levels of correctness. 
     \end{frame}
     \begin{frame}{Sir C. A. Richard Hoare}
       \begin{columns}
@@ -267,10 +337,19 @@
     \end{frame}
 
 \section{Conclusion}
-  \subsection{Key Takeaway}
-    \begin{frame}{Important Takeaway}
+  \subsection{Conclusion}
+    \begin{frame}{}{}
+      \begin{center}{\Huge{Conclusion}}\end{center}
+    \end{frame}
+    \begin{frame}{Summary}
+      \begin{itemize}
+        \item SPIN is a powerful model checking tool.
+        \item It is time bring formal methods into our curriculum
+        \item It is time we practice formal verification!
+      \end{itemize}
     \end{frame}
   \subsection{Q and A}
-    \begin{frame}{Questions?}
+    \begin{frame}{}{}
+      \begin{center}{\Huge{Questions?}}\end{center}
     \end{frame}
 \end{document}
