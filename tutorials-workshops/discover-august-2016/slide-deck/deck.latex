@@ -236,7 +236,6 @@
             \item Mentored the design of world's first symbolic model checker.
             \item Contributed to the design of highly efficient theorem provers
           \end{itemize} 
-
       \end{columns}
     \end{frame}
     \begin{frame}{{\hspace{0.1\textwidth}}Joseph Sifakis {\hspace{0.25\textwidth}} Allen Emerson}
@@ -290,10 +289,76 @@
       \begin{itemize}
         \item An accepting $\omega$-run of finite state automaton $\mathrm{(S, s_0, L, T, F)}$
               is any infinite run $\sigma$ such that ${\exists \mathrm{s_{f}.\,s_{f} \in F \wedge s_f} \in \sigma^\omega}$\vspace*{2mm}\\
+        \item<2-> An infinite run is accepted if and only if some state in F is visited
+                  infinitely often in the run.\vspace*{2mm}\\
+        \item<3> A B\"{u}chi automaton satisfies the $\omega$-acceptance conditions.
       \end{itemize}
-      An infinite run is accepted if and only if some state in F is visited infinitely often in the run.
+
     \end{frame}
-    \begin{frame}{}
+    \begin{frame}{Temporal Logic}
+      \begin{itemize}
+        \item<1-> Automata provides the specification of the system behavior
+        \item<2-> A verification model should contain a formulation of the \emph{correctness 
+                  requirements} of the system.
+        \item<3-> We need to be able to verify properties of \emph{reactive} programs.
+        \begin{itemize}
+          \item<4-> \emph{ready} is invariantly true.
+          \item<5-> \emph{send} always implies an eventual \emph{ack} response.
+          \item<6-> \emph{reset} always eventually becomes \emph{false} at least once more.
+        \end{itemize}
+      \end{itemize}
+    \end{frame}
+    \begin{frame}{Temporal Logic}
+       \begin{figure}[ht]
+         \begin{center}
+           \includegraphics[scale=0.35]{../../../pictures/protocol-automaton.png}
+          \end{center}
+       \end{figure}
+    \end{frame}
+    \begin{frame}{Temporal Logic}
+       \begin{figure}[ht]
+         \begin{center}
+           \includegraphics[scale=0.35]{../../../pictures/protocol-automaton-mu.png}
+          \end{center}
+       \end{figure}
+    \end{frame}
+
+    \begin{frame}{Frequently Used Linear Temporal Logic Formulae}
+      \begin{table}[ht]
+        \caption{LTL Formulae}
+        \centering
+        \begin{tabular}{lll}
+        \hline
+          Formula     & Read As   & Template   \\
+        \hline
+          $\Box$\,p & always p & \emph{invariance} \\
+          $\lozenge$\,p & eventually p & \emph{guarantee}\\
+          p $\rightarrow\lozenge$\,q & p implies eventually q & \emph{response}\\ 
+          p $\rightarrow$\, q U r  & p implies q until r  & \emph{precedence}\\
+          $\Box \lozenge$\,p & always eventually p & \emph{progress}\\
+          $\lozenge\Box$\,p & eventually always p & \emph{stability}\\
+          $\lozenge$\,p$\rightarrow\lozenge$\,q & eventually p implies eventually q & \emph{correlation}\\
+        \hline\\
+        \end{tabular}
+      \end{table}
+    \end{frame}
+    
+    \begin{frame}{Specification of a Few Properties}
+      \begin{table}[ht]
+        \caption{LTL Specification}
+        \centering
+        \begin{tabular}{ll}
+        \hline
+          Formula     & Description   \\
+        \hline
+          $\Box$\,p & p is invariantly \emph{true} \\
+          $\lozenge \Box$\,!p & p eventually becomes invariantly false\\
+          $\Box \lozenge$\,!p & p always eventually becomes false at least once \\
+          $\Box$ (q $\rightarrow$\,!p) & q always implies !p \\ 
+          p $\rightarrow\lozenge$\,q & p always implies eventually q \\
+        \hline\\
+        \end{tabular}
+      \end{table}
     \end{frame}
 
 \section{Verified Software Intiative}
