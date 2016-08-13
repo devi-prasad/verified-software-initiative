@@ -43,6 +43,34 @@
     \begin{frame}{}{}
       \begin{center}{\Huge{Background}}\end{center}
     \end{frame}
+    \begin{frame}{Sir C. A. Richard Hoare}
+      \begin{columns}
+        \column{0.5\textwidth}
+          \begin{figure}[ht]
+            \begin{center}
+              \includegraphics[height=2in]{../../../pictures/SirTonyHoare.jpg}
+             \end{center}
+          \end{figure}
+        \column{0.5\textwidth}
+          "Education in technology should begin at the undergraduate level. Would you be
+           prepared to teach the use of specifications and assertions as a routine aid to 
+           program testing, as they are currently being used in Industry?"
+        \end{columns}
+    \end{frame}
+    \begin{frame}{Sir C. A. Richard Hoare}
+      \begin{columns}
+        \column{0.5\textwidth}
+          \begin{figure}[ht]
+            \begin{center}
+              \includegraphics[height=2in]{../../../pictures/SirTonyHoare.jpg}
+             \end{center}
+          \end{figure}
+        \column{0.5\textwidth}
+          "{\textcolor{gray}{Education in technology should begin at the undergraduate level. Would you be
+           prepared to teach the use of specifications and assertions as a routine aid to 
+           program testing, as they are currently being used in Industry?}} Would you use them yourself as an aid to marking the students' practical assignments?"
+        \end{columns}
+    \end{frame}
     \begin{frame}{Three Catastrophes}
       \begin{itemize}
         \item Loss of lives due to Toyota unintended acceleration defect \textcolor{red} {(2002 - 2014)}
@@ -67,7 +95,7 @@
     \end{figure}
     \end{frame}
     \begin{frame}{Linux Kernel Keyring Bug}
-      An embarrassing bug that confirms Dijkstra's insightful observations.
+      An embarrassing bug that confirms Dijkstra's incisive observations.
       \vspace*{5mm}\\
       \textcolor{darkgray}{"The join\_session\_keyring function in security/keys/process\_
       keys.c in the Linux kernel before 4.4.1 mishandles object references in a certain error 
@@ -95,7 +123,7 @@
       \begin{itemize}
         \item NASA - software for Mars rover \emph{Curiosity} \textcolor{blue} {(2012)}
         \vspace*{1.5mm}\\
-        \item Amazon - formal verification of cloud service {\textcolor{blue}{(2011)}}
+        \item Amazon - formal verification of cloud services {\textcolor{blue}{(2011)}}
         \vspace*{1.5mm}\\
       \end{itemize}
     \end{frame}
@@ -187,8 +215,17 @@
 
   \subsection{Model Checking}
     \begin{frame}{Model Checking}
-       Check that the model satisfies the properties.
+      \begin{itemize}
+        \item<1-> Define a formal model of the system.
+        \item<2-> Formulate a rigorous specification of the properties.
+        \item<3-> construct a verification algorithm.
+          \begin{itemize}
+            \item<4-> detect violation of the properties.
+            \item<4-> produce an execution trace for a counter-example.
+          \end{itemize}
+      \end{itemize}
     \end{frame}
+
     \begin{frame}{Amir Pnueli}
       \begin{columns}
         \column{0.5\textwidth}
@@ -198,13 +235,20 @@
              \end{center}
           \end{figure}
         \column{0.5\textwidth}
-            "In mathematics, logic is static \ldots When one designs a dynamic computer 
-            system that has to react to ever changing conditions, \ldots one cannot design 
-            the system based on a static view. It is necessary to characterize and describe 
-            dynamic behaviors that connect entities, events, and reactions at different time 
-            points. Temporal Logic deals therefore with a dynamic view of the world that 
-            evolves over time."
+            "In mathematics, logic is static \ldots When one designs a dynamic computer system that has to react to ever changing conditions, \ldots one cannot design the system based on a static view. \textcolor{gray}{It is necessary to characterize and describe dynamic behaviors that connect entities, events, and reactions at different time points. Temporal Logic deals therefore with a dynamic view of the world that evolves over time.}"
       \end{columns}
+    \end{frame}
+    \begin{frame}{Amir Pnueli}
+      \begin{columns}
+          \column{0.5\textwidth}
+            \begin{figure}[ht]
+              \begin{center}
+                \includegraphics[height=2.45in]{../../../pictures/AmirPnueli.jpg}
+               \end{center}
+            \end{figure}
+          \column{0.5\textwidth}
+            "\textcolor{gray}{In mathematics, logic is static \ldots When one designs a dynamic computer system that has to react to ever changing conditions, \ldots one cannot design the system based on a static view.} It is necessary to characterize and describe dynamic behaviors that connect entities, events, and reactions at different time points. Temporal Logic deals therefore with a dynamic view of the world that evolves over time."
+        \end{columns}
     \end{frame}
     \begin{frame}{Leslie Lamport}
       \begin{columns}
@@ -369,6 +413,7 @@
     \begin{frame}{Verified Software Initiative Manifesto}
       The Verified Software Initiative is a long-term research program directed at the challenge of verifying software to the highest levels of correctness. 
     \end{frame}
+
     \begin{frame}{Sir C. A. Richard Hoare}
       \begin{columns}
         \column{0.5\textwidth}
@@ -381,10 +426,10 @@
           "The teams of experimental scientists will require education in the relevant 
           theories, and training in the use of the best available tools. Would you be 
           prepared to design and deliver Master's courses on program verification?
-          Would it be appropriate to set Master's projects to verify small portions 
-          of the challenge material held in the repository?"
+          \textcolor{gray}{Would it be appropriate to set Master's projects to verify small portions of the challenge material held in the repository?"}
         \end{columns}
     \end{frame}
+
     \begin{frame}{Sir C. A. Richard Hoare}
       \begin{columns}
         \column{0.5\textwidth}
@@ -394,10 +439,11 @@
              \end{center}
           \end{figure}
         \column{0.5\textwidth}
-          "Education in technology should begin at the undergraduate level. Would you be
-           prepared to teach the use of specifications and assertions as a routine aid to 
-           program testing, as they are currently being used in Industry? Would you use them 
-           yourself as an aid to marking the students' practical assignments?"
+          "\textcolor{gray}{The teams of experimental scientists will require education in the relevant 
+          theories, and training in the use of the best available tools. Would you be 
+          prepared to design and deliver Master's courses on program verification?}
+          Would it be appropriate to set Master's projects to verify small portions 
+          of the challenge material held in the repository?"
         \end{columns}
     \end{frame}
 
