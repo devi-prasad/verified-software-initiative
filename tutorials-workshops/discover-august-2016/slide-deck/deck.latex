@@ -71,6 +71,7 @@
            program testing, as they are currently being used in Industry?}} Would you use them yourself as an aid to marking the students' practical assignments?"
         \end{columns}
     \end{frame}
+
     \begin{frame}{Three Catastrophes}
       \begin{itemize}
         \item Loss of lives due to Toyota unintended acceleration defect \textcolor{red} {(2002 - 2014)}
@@ -94,16 +95,7 @@
       \end{center}
     \end{figure}
     \end{frame}
-    \begin{frame}{Linux Kernel Keyring Bug}
-      An embarrassing bug that confirms Dijkstra's incisive observations.
-      \vspace*{5mm}\\
-      \textcolor{darkgray}{"The join\_session\_keyring function in security/keys/process\_
-      keys.c in the Linux kernel before 4.4.1 mishandles object references in a certain error 
-      case, which allows local users to gain privileges or cause a denial of service (integer 
-      overflow and use-after-free) via crafted keyctl commands."}
-      \vspace*{4mm}\\
-      \url{http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2016-0728}\\
-    \end{frame}
+
     \begin{frame}{Informal Methods - Testing}
     \begin{columns}
       \column{0.5\textwidth}
@@ -117,6 +109,17 @@
       "The first moral of the story is that program testing can be used 
       very effectively to show the presence of bugs but never to show their absence."
     \end{columns}
+    \end{frame}
+
+    \begin{frame}{Linux Kernel Keyring Bug}
+      An embarrassing bug that confirms Dijkstra's incisive observations.
+      \vspace*{5mm}\\
+      \textcolor{darkgray}{"The join\_session\_keyring function in security/keys/process\_
+      keys.c in the Linux kernel before 4.4.1 mishandles object references in a certain error 
+      case, which allows local users to gain privileges or cause a denial of service (integer 
+      overflow and use-after-free) via crafted keyctl commands."}
+      \vspace*{4mm}\\
+      \url{http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2016-0728}\\
     \end{frame}
     
     \begin{frame}{Two Superior Solutions}
@@ -152,6 +155,40 @@
           \end{center}
         \end{figure}
     \end{frame}
+
+    \begin{frame}{A Sage Thought}
+      \begin{center}\Huge{A Sage Thought}\end{center}
+    \end{frame}
+
+    \begin{frame}{Donald Knuth}
+      \begin{columns}
+        \column{0.5\textwidth}
+          \begin{figure}[ht]
+            \begin{center}
+              \includegraphics[scale=0.315]{../../../pictures/DonaldKnuth-2.jpg}
+            \end{center}
+          \end{figure}
+        \column{0.5\textwidth}
+          "I was surprised to learn that the writing of programs for TeX and for METAFONT 
+          proved to be much more difficult than all the other things I had done (like proving 
+          theorems and writing books)."
+        \end{columns}
+    \end{frame}
+
+     \begin{frame}{Donald Knuth}
+       \begin{columns}
+         \column{0.5\textwidth}
+           \begin{figure}[ht]
+             \begin{center}
+               \includegraphics[scale=0.45]{../../../pictures/DonaldKnuth-1.jpg}
+             \end{center}
+           \end{figure}
+         \column{0.5\textwidth}
+           "The creation of good software demands a significantly 
+           higher standard of accuracy than those other things do, and it requires a longer 
+           attention span than other intellectual tasks."
+         \end{columns}
+     \end{frame}
 
 \section{Introduction}
   \subsection{Formal Methods}
@@ -313,6 +350,14 @@
         \tab $\mathrm{F}$ \tab[3mm] is a set of \emph{final} states, $\mathrm{F \subseteq S}$\vspace*{1.2mm}\\
     \end{frame}
 
+    \begin{frame}{Finite State Automaton - An Example}
+       \begin{figure}[ht]
+         \begin{center}
+           \includegraphics[scale=0.35]{../../../pictures/protocol-automaton.png}
+          \end{center}
+       \end{figure}
+    \end{frame}
+
     \begin{frame}{Omega Run}
       \begin{itemize}
         \item A finite state machine models terminating executions
@@ -321,6 +366,15 @@
         \item<2-> An infinite run is called an $\omega$-run or \emph{omega run}
       \end{itemize}
     \end{frame}
+
+    \begin{frame}{Omega Runs in an Automaton}
+       \begin{figure}[ht]
+         \begin{center}
+           \includegraphics[scale=0.35]{../../../pictures/protocol-automaton-mu.png}
+          \end{center}
+       \end{figure}
+    \end{frame}
+
     \begin{frame}{Omega Acceptance}
       \begin{itemize}
         \item if $\sigma$ is an infinite run, $\sigma^{\omega}$ represents the set of
@@ -337,8 +391,8 @@
                   infinitely often in the run.\vspace*{2mm}\\
         \item<3> A B\"{u}chi automaton satisfies the $\omega$-acceptance conditions.
       \end{itemize}
-
     \end{frame}
+
     \begin{frame}{Temporal Logic}
       \begin{itemize}
         \item<1-> Automata provides the specification of the system behavior
@@ -351,20 +405,6 @@
           \item<6-> \emph{reset} always eventually becomes \emph{false} at least once more.
         \end{itemize}
       \end{itemize}
-    \end{frame}
-    \begin{frame}{Temporal Logic}
-       \begin{figure}[ht]
-         \begin{center}
-           \includegraphics[scale=0.35]{../../../pictures/protocol-automaton.png}
-          \end{center}
-       \end{figure}
-    \end{frame}
-    \begin{frame}{Temporal Logic}
-       \begin{figure}[ht]
-         \begin{center}
-           \includegraphics[scale=0.35]{../../../pictures/protocol-automaton-mu.png}
-          \end{center}
-       \end{figure}
     \end{frame}
 
     \begin{frame}{Frequently Used Linear Temporal Logic Formulae}
@@ -454,7 +494,7 @@
     \end{frame}
     \begin{frame}{Summary}
       \begin{itemize}
-        \item SPIN is a powerful model checking tool.
+        \item SPIN is a valuable model checking tool.
         \item It is time bring formal methods into our curriculum
         \item It is time we practice formal verification!
       \end{itemize}
