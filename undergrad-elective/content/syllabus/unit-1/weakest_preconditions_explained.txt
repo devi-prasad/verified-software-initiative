@@ -1,0 +1,83 @@
+Why are we generally interested in a weakest precondition and not a strongest 
+precondition?
+
+Consider the Hoare triple {P} S {R}, where S is the statement to be executed, 
+R is the postcondition, and P is the precondition. For total correctness, 
+execution of S must terminate, and on termination of executing S, the state 
+space of the program must satisfy R. 
+
+We often know the postcondition for sure. For example, we know that after 
+adding two numbers, the sum is equal to the addition of the input numbers. As 
+another example, consider searching for an element in an array of numbers. We 
+know that if the key is in the input array, the 'index' variable will 
+indicate the first position where the key appears. As another example, we 
+know that after sorting an array, a[i] <= a[i+1] for 0 <= i < length(a).
+
+In other words, if we are given a postcondition and a statement, we would 
+like to know what is the "simplest" or "weakest" precondition on the states 
+of a program that will allow the execution of statement S to reach a state 
+described by R.
+
+Just to recall, given an implication such as p -> q, we say that predicate p 
+is stronger than p if the implication does not hold the other way. That is, 
+q -> p is false or not true or does not hold. When a predicate is "strong", it
+represents fewer states - the size of the state space is smaller. When a
+predicate is "weaker", it permits a larger state space. 
+
+Consider the following examples where A and B represent arbitrary predicates, 
+and && and || or logical 'and' and 'or' operators.
+
+  (1)
+    (a) A && B -> A  (true)
+    (b) A && B -> B  (true)
+    (c) A -> A && B  (need not be true! therefore, logically does not hold) 
+    (d) B -> A && B  (need not be true! therefore, logically does not hold) 
+
+In (1) above, predicate A && B is stronger than A, and also, A && B is 
+stronger than B. Think of this for a while. Pause and notice carefully. The 
+predicate A && B requires both A and B to be true, while predicate A merely
+requires A to be true i case (a), and it does not even care about predicate B.
+Similar arguments hold for predicate B in case (b).
+
+Predicate A allows predicate B to take ANY value (TRUE or FALSE), while the 
+predicate A && B requires A and B to both take only one boolean value: TRUE. 
+It must be clear now that "stronger" predicates reduce the state space - they
+permit only a few possibilities, while "weaker" predicates allow more 
+possibilities, and thus a larger state space.
+
+
+  (2)
+    (a) A -> A || B  (true - if A is true then the value B does not matter)
+    (b) B -> A || B  (true - if B is true then the value of A does not matter)
+    (c) A || B -> A  (need not be true! therefore, logically does not hold)
+    (d) A || B -> B  (need not be true! therefore, logically does not hold) 
+
+In (2) above, predicate A || B is weaker than A as in case (a), and also,
+A || B is weaker than B as in case (b).  
+
+Coming back to the original question, hopefully we are in a better position to
+see why weakest precondition is preferred: it is because a weaker precondition
+would allow for more possibilities, a larger state space, or more generous
+requirements, more relaxed specifications! 
+
+Thus, when we reconsider a Hoare triple {P} S {R}, we are interested in more
+"relaxed" or "permissive" state space requirements P that allow execution of S
+to reach a state where R holds! It is way easier to find a weaker requirement
+than a more stronger requirement! As long as correctness holds, we are fine
+with less stringent specifications. 
+
+While "strong" preconditions may sound great, it is usually not possible to
+find them in one go. Also, we usually are not keen about "stronger" requirements. We are interested in "just enough" requirements, which is more
+practical way to build programs as well as larger software!
+
+Think of it this way: if you wish to send an email to your friend, would you
+be interested in "weaker" requirements or "stronger" requirements? A 
+"stronger" requirement may have to indicate the size of memory, type of OS,
+the Web browser to use, and many parameters that are irrelevant. A "weaker" or
+just enough specification would only need to state the email client protocol!
+
+
+
+
+
+
