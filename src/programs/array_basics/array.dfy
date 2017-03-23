@@ -22,6 +22,7 @@ method array_init(a: array<int>)
     }
 }
 
+
 /**
  * we need to state in the postconditions that the array is modified only at
  *  one position - 'index' - and that the rest of the array is untouched.
@@ -40,7 +41,8 @@ method array_update(a: array<int>, index: nat, val: int)
     a[index] := val;
 }
 
-method test_array_new()
+
+method verify_array_new()
 {
     var arr: array<int> := new int[8];
     array_init(arr);
