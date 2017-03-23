@@ -27,6 +27,7 @@ method find_even(arr: array<int>) returns (found: bool)
     assert(found == false);
 }
 
+
 method verify_find_even()
 {
     var a := new int[4];
