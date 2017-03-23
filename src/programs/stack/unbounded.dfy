@@ -1,10 +1,13 @@
+
 newtype Element = real
+
 
 method stack_new() returns (s: seq<Element>)
     ensures s == []
 {
 	s := [];
 }
+
 
 method stack_empty(s: seq<Element>) returns (b: bool)
     ensures |s| == 0 ==> b == true;
@@ -13,11 +16,13 @@ method stack_empty(s: seq<Element>) returns (b: bool)
     b := |s| == 0;
 }
 
+
 method stack_full(s: seq<Element>) returns (b: bool)
     ensures b == false;
 {
     b := false;
 }
+
 
 method stack_push(stk: seq<Element>, d: Element) returns (stk': seq<Element>)
     ensures (stk' == stk + [d]);
@@ -25,12 +30,14 @@ method stack_push(stk: seq<Element>, d: Element) returns (stk': seq<Element>)
 	stk' := stk + [d];
 }
 
+
 method stack_peek(stk: seq<Element>) returns (d: Element)
     requires |stk| > 0;
     ensures d == stk[|stk| - 1];
 {
 	d := stk[|stk| - 1];
 }
+
 
 method stack_pop(stk: seq<Element>) returns (stk': seq<Element>)
     requires |stk| > 0;
@@ -40,7 +47,8 @@ method stack_pop(stk: seq<Element>) returns (stk': seq<Element>)
     stk' := stk[0 .. (|stk|-1)];
 }
 
-method test_empty_stack()
+
+method verify_unbounded_empty_stack()
 {
     var stk : seq<Element>;
     var stk' : seq<Element>;
@@ -56,7 +64,7 @@ method test_empty_stack()
     assert(b == false);
 }
 
-method test_pop_empty_stack()
+method verify_unbounded_pop_empty_stack()
 {
     var stk := stack_new();
     var b := stack_empty(stk);
@@ -65,7 +73,7 @@ method test_pop_empty_stack()
     //var stk' := stack_pop(stk);	
 }
 
-method test_general_stack()
+method verify_unbounded_general_stack_use()
 {
     var stk : seq<Element>;
     var stk' : seq<Element>;

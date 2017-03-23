@@ -1,18 +1,22 @@
 
-datatype Stack = Stack(stk: array<int>, top: int)
-
 datatype State = OK | FULL | EMPTY
 
 datatype Result = Result(data: int, status: State)
+
+datatype Stack = Stack(stk: array<int>, top: int)
+
+
 function val(res: Result) : int
 {
     res.data
 }
 
+
 function status(res: Result) : State
 {
     res.status
 }
+
 
 method stack_new(size: nat) returns (stack: Stack)
     requires size > 0;
@@ -25,17 +29,20 @@ method stack_new(size: nat) returns (stack: Stack)
     stack := Stack(s, -1);
 }
 
+
 function stack_size(s: Stack) : int
     requires s.stk != null;
 {
     s.top + 1
 }
 
+
 function stack_depth(s: Stack) : int
     requires s.stk != null;
 {
     s.stk.Length
 }
+
 
 function stack_peek(s: Stack) : Result
     requires s.stk != null;
@@ -48,6 +55,7 @@ function stack_peek(s: Stack) : Result
         Result(0, EMPTY)
 }
 
+
 function stack_full(s: Stack) : bool
     requires s.stk != null;
     requires s.stk.Length > s.top >= -1;
@@ -56,6 +64,7 @@ function stack_full(s: Stack) : bool
     (s.top + 1 == s.stk.Length)
 }
 
+
 function stack_empty(s: Stack) : bool
     requires s.stk != null;
     requires s.stk.Length > s.top >= -1;
@@ -63,6 +72,7 @@ function stack_empty(s: Stack) : bool
 {
     (s.top == -1)
 }
+
 
 method stack_push_safe(s: Stack, d: int) returns (rstack: Stack, res: Result)
     requires s.stk != null;
@@ -80,6 +90,7 @@ method stack_push_safe(s: Stack, d: int) returns (rstack: Stack, res: Result)
     res := Result(d, OK);
 }
 
+
 function method stack_pop_safe(s: Stack) : Stack
     requires s.stk != null;
     requires s.top >= -1;
@@ -89,7 +100,8 @@ function method stack_pop_safe(s: Stack) : Stack
     if (s.top > -1) then Stack(s.stk, s.top - 1) else s
 }
 
-method test_one_element_stack_safe()
+
+method verify_safe_one_element_stack()
 {
     var stk := stack_new(1);
     var rstk, res;
@@ -119,7 +131,7 @@ method test_one_element_stack_safe()
     assert(stack_empty(rstk));
 }
 
-method test_one_element_stack_push_pop_safe()
+method verify_safe_one_element_stack_push_pop()
 {
     var stk := stack_new(1);
     var rstk, res;
@@ -163,7 +175,7 @@ method test_one_element_stack_push_pop_safe()
 }
 
 
-method test_two_element_stack_safe()
+method verify_safe_two_element_stack()
 {
     var stk := stack_new(2);
     var rstk, res;
@@ -188,7 +200,7 @@ method test_two_element_stack_safe()
     assert(stack_empty(rstk));
 }
 
-method test_generic_stack()
+method verify_safe_general_stack_use()
 {
     var stk := stack_new(4);
     var rstk, res;
@@ -235,4 +247,3 @@ method test_generic_stack()
     rstk := stack_pop_safe(rstk);
     assert(stack_empty(rstk));
 }
-
